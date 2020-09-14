@@ -1,0 +1,29 @@
+%h1 Listing babies
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Last name
+      %th Dob
+      %th Gender
+      %th Blood type
+      %th
+      %th
+      %th
+
+  %tbody
+    - @babies.each do |baby|
+      %tr
+        %td= baby.name
+        %td= baby.last_name
+        %td= baby.dob
+        %td= baby.gender
+        %td= baby.blood_type
+        %td= link_to 'Show', baby
+        %td= link_to 'Edit', edit_baby_path(baby)
+        %td= link_to 'Destroy', baby, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Baby', new_baby_path
