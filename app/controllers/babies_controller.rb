@@ -4,7 +4,10 @@ class BabiesController < ApplicationController
   # GET /babies
   # GET /babies.json
   def index
-    @babies = Baby.all
+    @babies = Baby.where(user_id: params[:user_id])
+    if @babies.nil?
+      render new_user_baby_path
+    end
   end
 
   # GET /babies/1
@@ -14,6 +17,7 @@ class BabiesController < ApplicationController
 
   # GET /babies/new
   def new
+    @user = User.find(params[:user_id])
     @baby = Baby.new
   end
 
@@ -25,14 +29,14 @@ class BabiesController < ApplicationController
   # POST /babies.json
   def create
     @baby = Baby.new(baby_params)
+    @baby[:user_id] = params[:user_id]
 
     respond_to do |format|
       if @baby.save
-        format.html { redirect_to @baby, notice: 'Baby was successfully created.' }
+        format.html { redirect_to user_baby_path(@baby.user_id, @baby.id), notice: 'Baby was successfully created.' }
         format.json { render :show, status: :created, location: @baby }
       else
         format.html { render :new }
-        format.json { render json: @baby.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,9 +44,10 @@ class BabiesController < ApplicationController
   # PATCH/PUT /babies/1
   # PATCH/PUT /babies/1.json
   def update
+    @user = User.find(params[:user_id])
     respond_to do |format|
-      if @baby.update(baby_params)
-        format.html { redirect_to @baby, notice: 'Baby was successfully updated.' }
+      if @user.babies.find(@baby.id).update(baby_params)
+        format.html { redirect_to user_baby_path(@baby.user_id, @baby.id), notice: 'Baby was successfully updated.' }
         format.json { render :show, status: :ok, location: @baby }
       else
         format.html { render :edit }
@@ -54,14 +59,19 @@ class BabiesController < ApplicationController
   # DELETE /babies/1
   # DELETE /babies/1.json
   def destroy
-    @baby.destroy
+    @user = User.find(params[:user_id])
+    @user.babies.find(@baby.id).destroy
     respond_to do |format|
-      format.html { redirect_to babies_url, notice: 'Baby was successfully destroyed.' }
+      format.html { redirect_to user_babies_path, notice: 'Baby was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-
+  def select_baby
+    @baby = Baby.find(params[:baby_id])
+    session[:baby_id] = params[:baby_id]
+    redirect_to user_baby_path(@baby.user.id, @baby.id), notice: "Bebe seleccionado: #{@baby.name}"
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_baby
@@ -70,6 +80,6 @@ class BabiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def baby_params
-      params.require(:baby).permit(:name, :last_name, :dob, :gender, :blood_type)
+      params.require(:baby).permit(:name, :last_name, :dob, :gender, :blood_type, :user_id)
     end
 end

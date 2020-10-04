@@ -1,0 +1,21 @@
+%h1 ¿Cómo vamos con el biberón?
+%p
+  %h2 Registro de la ultima semana
+%p
+  %table
+    %thead
+      %tr
+        %th Dia
+        %th Hora
+        %th Cantidad
+    %tbody
+      - @feeds.each do |feed|
+        %tr
+          %td= feed.date.strftime("%A")
+          %td= feed.hour.strftime("%H:%M")
+          %td= feed.mililitres
+
+%p
+  = "El total de hoy es de #{@daily_feeds} ml"
+%p
+  = link_to 'Nueva toma', new_user_baby_feed_path(session[:user_id], Baby.last.id)

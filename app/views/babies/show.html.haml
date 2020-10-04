@@ -1,21 +1,21 @@
 %p#notice= notice
 
 %p
-  %b Name:
+  %b Nombre:
   = @baby.name
 %p
-  %b Last name:
+  %b Apellidos:
   = @baby.last_name
 %p
-  %b Dob:
+  %b Fecha Nacimiento:
   = @baby.dob
 %p
-  %b Gender:
+  %b Sexo:
   = @baby.gender
 %p
-  %b Blood type:
+  %b Grupo Sang.:
   = @baby.blood_type
 
-= link_to 'Edit', edit_baby_path(@baby)
+= link_to 'Edit', edit_user_baby_path(user: current_user, baby: @baby)
 \|
-= link_to 'Back', babies_path
+= link_to 'Back', user_babies_path(params[:user_id])

@@ -6,6 +6,7 @@ class CreateBabies < ActiveRecord::Migration[5.2]
       t.date :dob
       t.string :gender
       t.integer :blood_type
+      t.references :user, index: true
 
       t.timestamps
     end

@@ -1,0 +1,28 @@
+%p
+  %b Nombre:
+  = @user.name
+%p
+  %b Apellidos:
+  = @user.last_name
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Password:
+  = @user.password_digest
+%p
+  %b Nivel:
+  = @user.level
+%p
+  %b Babies:
+  %b
+  - @user.babies.each do |baby|
+    %br
+    = link_to "#{baby.name} #{baby.last_name}", user_baby_path(baby)
+%br
+%p
+  = button_to 'Añadir bebé', new_user_baby_path(@user), method: :get
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path

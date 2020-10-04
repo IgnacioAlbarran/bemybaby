@@ -1,0 +1,16 @@
+%p#notice= notice
+
+.container.align-items-center
+  .row.justify-content-center
+    %h1 Entrar
+  .row.justify-content-center
+    = form_tag '/login' do
+      = label_tag :email
+      %br
+      = email_field_tag :email
+      %br
+      = label_tag :password, 'contraseña'
+      %br
+      = password_field_tag :password
+      %p
+      = submit_tag "Entrar"

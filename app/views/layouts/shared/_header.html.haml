@@ -1,0 +1,38 @@
+%nav.navbar.page-header
+  %a.btn.btn-link.sidebar-mobile-toggle.d-md-none.mr-auto{:href => "#"}
+    %i.fa.fa-bars
+  %a.navbar-brand{:href => "#"}
+    %img{:alt => "logo", :src => "/assets/images/logo.png"}/
+  %a.btn.btn-link.sidebar-toggle.d-md-down-none{:href => "#"}
+    %i.fa.fa-bars
+  %ul.navbar-nav.ml-auto
+    %li.nav-item.d-md-down-none
+      %a{:href => "#"}
+        %i.fa.fa-bell
+        %span.badge.badge-pill.badge-danger 5
+    %li.nav-item.d-md-down-none
+      %a{:href => "#"}
+        %i.fa.fa-envelope-open
+        %span.badge.badge-pill.badge-danger 5
+    %li.nav-item.dropdown
+      %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        %img.avatar.avatar-sm{:alt => "logo", :src => "/assets/images/avatar-1.png"}/
+        %span.small.ml-1.d-md-down-none John Smith
+      .dropdown-menu.dropdown-menu-right
+        .dropdown-header Account
+        %a.dropdown-item{:href => "#"}
+          %i.fa.fa-user
+          Profile
+        %a.dropdown-item{:href => "#"}
+          %i.fa.fa-envelope
+          Messages
+        .dropdown-header Settings
+        %a.dropdown-item{:href => "#"}
+          %i.fa.fa-bell
+          Notifications
+        %a.dropdown-item{:href => "#"}
+          %i.fa.fa-wrench
+          Settings
+        %a.dropdown-item{:href => "#"}
+          %i.fa.fa-lock
+          Logout

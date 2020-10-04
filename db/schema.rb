@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_183949) do
+ActiveRecord::Schema.define(version: 2020_09_21_164237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,30 @@ ActiveRecord::Schema.define(version: 2020_09_10_183949) do
     t.date "dob"
     t.string "gender"
     t.string "blood_type"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_babies_on_user_id"
+  end
+
+  create_table "feeds", force: :cascade do |t|
+    t.date "date"
+    t.time "hour"
+    t.integer "mililitres"
+    t.bigint "baby_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_feeds_on_baby_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "last_name"
+    t.string "email"
+    t.integer "level", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end

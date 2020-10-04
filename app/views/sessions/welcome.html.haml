@@ -1,0 +1,8 @@
+.container.align-items-center
+  .row.justify-content-center
+    %h1 BeMyBaby
+  .row.justify-content-center
+    %h4 The best baby diary for parents
+    %p
+      = button_to "Entrar", new_session_path, method: :get
+      = button_to "Registrarse", new_user_path, method: :get

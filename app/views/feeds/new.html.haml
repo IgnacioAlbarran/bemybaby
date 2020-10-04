@@ -1,0 +1,46 @@
+.row.justify-content-center
+  .col-md-5
+    .card.p-4
+      .card-header.text-center.text-uppercase.h4.font-weight-light
+        Nuevo biberón
+      .card-body.py-5
+        = form_for [@user, @baby, @feed], layout: :horizontal do |f|
+          - if @baby.errors.any?
+            #error_explanation
+              %h2= "#{pluralize(@baby.errors.count, "error")} prohibited this baby from being saved:"
+              %ul
+                - @baby.errors.full_messages.each do |message|
+                  %li= message
+          .field
+            = f.date_select :date, layout: :default
+          .field
+            = f.time_select :hour, layout: :default, default: Time.now.localtime
+          .field
+            = f.number_field :mililitres, layout: :default, step: 10
+          .actions
+            = f.submit 'Guardar'
+
+        -# = form_for [@user, @baby], method: :post do |f|
+        -#   - if @baby.errors.any?
+        -#     #error_explanation
+        -#       %h2= "#{pluralize(@baby.errors.count, "error")} prohibited this baby from being saved:"
+        -#       %ul
+        -#         - @baby.errors.full_messages.each do |message|
+        -#           %li= message
+        -#   .field
+        -#     = f.label :name, 'Nombre'
+        -#     = f.text_field :name
+        -#   .field
+        -#     = f.label :last_name, 'Apellidos'
+        -#     = f.text_field :last_name
+        -#   .field
+        -#     = f.label :dob, 'Fecha Nacimiento'
+        -#     = f.date_select :dob
+        -#   .field
+        -#     = f.label :gender, 'Sexo'
+        -#     = f.select :gender, ['niño', 'niña']
+        -#   .field
+        -#     = f.label :blood_type, 'Grupo Sanguíneo'
+        -#     = f.select :blood_type, Baby.blood_types.keys
+        -#   .actions
+        -#     = f.submit 'Save'

@@ -1,0 +1,22 @@
+%h1 Listado de Usuarios
+
+%table
+  %thead
+    %tr
+      %th Nombre y apellidos
+      %th Email
+      %th Nivel
+
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to user.full_name, user_path(user.id)
+        %td= user.email
+        %td= user.level
+        %td= link_to 'Editar', edit_user_path(user)
+        %td= link_to 'Borrar', user, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= button_to 'Nuevo usuario', new_user_path, method: :get

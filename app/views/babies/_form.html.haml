@@ -1,25 +1,31 @@
-= form_for @baby do |f|
+%h1 Los datos de mi bebé
+= form_for [@user, @baby], method: :post do |f|
   - if @baby.errors.any?
     #error_explanation
       %h2= "#{pluralize(@baby.errors.count, "error")} prohibited this baby from being saved:"
       %ul
         - @baby.errors.full_messages.each do |message|
           %li= message
-
   .field
-    = f.label :name
+    = f.label :name, 'Nombre'
+    %br
     = f.text_field :name
   .field
-    = f.label :last_name
+    = f.label :last_name, 'Apellidos'
+    %br
     = f.text_field :last_name
   .field
-    = f.label :dob
+    = f.label :dob, 'Fecha Nacimiento'
+    %br
     = f.date_select :dob
   .field
-    = f.label :gender
+    = f.label :gender, 'Sexo'
+    %br
     = f.select :gender, ['niño', 'niña']
   .field
-    = f.label :blood_type
+    = f.label :blood_type, 'Grupo Sanguíneo'
+    %br
     = f.select :blood_type, Baby.blood_types.keys
   .actions
-    = f.submit 'Save'
+    %br
+    = f.submit 'Guardar'
