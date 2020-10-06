@@ -17,4 +17,3 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap
-//= require xray

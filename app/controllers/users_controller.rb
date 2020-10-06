@@ -27,11 +27,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    session[:user_id] = @user.id
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_babies_path(@user), method: :post, notice: 'User was successfully created.' }
+        session[:user_id] = @user.id
+        format.html { redirect_to user_babies_path(@user.id), method: :post, notice: 'User was successfully created.' }
       else
         p @user.errors.full_messages
         format.html { render :new }

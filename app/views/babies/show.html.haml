@@ -15,6 +15,9 @@
 %p
   %b Grupo Sang.:
   = @baby.blood_type
+%p
+  %b Usuarios:
+  = @baby.user.name
 
 = link_to 'Edit', edit_user_baby_path(user: current_user, baby: @baby)
 \|
