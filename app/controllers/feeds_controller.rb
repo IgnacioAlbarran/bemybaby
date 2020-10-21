@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
   def index
     baby_id = session[:baby_id]
     @feeds = Feed.where(baby_id: baby_id).order(:hour)
-    @daily_feeds = Feed.where(baby_id: baby_id).where("date > ?",Date.yesterday).pluck(:mililitres).sum
+    @daily_feeds = Feed.where(baby_id: baby_id).where("date > ?", Date.yesterday).pluck(:mililitres).sum
   end
 
   # GET /feeds/new
@@ -23,8 +23,6 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.save
-        p '00000000000000  HA GRABADO ALGO!!'
-        p "00000000000000 feed :: #{@feed.date} , #{@feed.hour}, #{@feed.mililitres}"
         format.html { redirect_to user_baby_feeds_path(session[:user_id], Baby.last.id), notice: 'feed was successfully created.' }
       else
         p '00000000000000'
