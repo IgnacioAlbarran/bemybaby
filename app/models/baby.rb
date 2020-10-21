@@ -18,6 +18,10 @@ class Baby < ApplicationRecord
   }
 
   def baby_exists?
-    !Baby.where(name: name, last_name: last_name, dob: dob).blank?
+    !Baby.where(name: name, last_name: last_name, blood_type: blood_type, dob: dob).blank?
+  end
+
+  def feeds_in_the_day
+    Feed.where(baby_id: id).where("date > ?", Date.yesterday).pluck(:mililitres).sum
   end
 end

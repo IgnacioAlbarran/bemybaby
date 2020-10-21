@@ -4,8 +4,13 @@ class Feed < ApplicationRecord
   #scope :total_hoy, -> { where(:date > Date.today).where(:date < Date.tomorrow) }
 
   validates :date, :hour, :mililitres, presence: true
+  validate :feed_uniqueness_validation, on: :create
 
-  def daily_feeds(baby_id)
-    Feed.where(baby_id: baby_id).where("date > ?",Date.yesterday).pluck(:mililitres).sum
+  private
+
+  def feed_uniqueness_validation
+    if Feed.where(baby_id: baby_id, date: date, hour: hour, mililitres: mililitres).exists?
+      errors.add(:hour, '¡Toma ya registrada!')
+    end
   end
 end
