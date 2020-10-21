@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => :create
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  layout 'plain', only: :new
+  layout 'plain', only: [:new, :create]
 
   # GET /users
   # GET /users.json
@@ -31,9 +31,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        format.html { redirect_to user_babies_path(@user.id), method: :post, notice: 'User was successfully created.' }
+        format.html { redirect_to user_babies_path(@user.id), notice: 'User was successfully created.' }
       else
-        p @user.errors.full_messages
+        @message = @user.errors.full_messages
         format.html { render :new }
       end
     end

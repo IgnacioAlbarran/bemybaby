@@ -1,32 +1,71 @@
-.sidebar
-  %nav.sidebar-nav
-    %ul.nav
-      %li.nav-title
-        = "Bebé seleccionado: #{Baby.find_by(id: session[:baby_id])&.name || 'ninguno'}"
-      %li.nav-item
-        %a.nav-link.active{:href => user_babies_path(session[:user_id])}
-          %i.icon.icon-speedometer
-          Mi bebe
-      %li.nav-item
-        %a.nav-link.active{:href => user_baby_feeds_path(session[:user_id], Baby.last.id) }
-          %i.icon.icon-speedometer
-          Tomas
-      %li.nav-item
-        %a.nav-link.active{:href => "index.html"}
-          %i.icon.icon-speedometer
-          Peso y altura
-      %li.nav-item
-        %a.nav-link.active{:href => "index.html"}
-          %i.icon.icon-speedometer
-          Proximos chequeos
-      %li.nav-item
-        %a.nav-link.active{:href => "index.html"}
-          %i.icon.icon-speedometer
-          Vacunas
-      %li.nav-item
-        %a.nav-link.active{:href => close_session_path }
-          %i.icon.icon-speedometer
+%nav.navbar.page-header
+  %a.btn.btn-link.sidebar-mobile-toggle.d-md-none.mr-auto{:href => "#"}
+    %i.fa.fa-bars
+  %a.navbar-brand{:href => "#"}
+    %img{:alt => "logo", :src => "./imgs/logo.png"}/
+  %a.btn.btn-link.sidebar-toggle.d-md-down-none{:href => "#"}
+    %i.fa.fa-bars
+  %ul.navbar-nav.ml-auto
+    %li.nav-item.d-md-down-none
+      %a{:href => "#"}
+        %i.fa.fa-bell
+        %span.badge.badge-pill.badge-danger 5
+    %li.nav-item.d-md-down-none
+      %a{:href => "#"}
+        %i.fa.fa-envelope-open
+        %span.badge.badge-pill.badge-danger 5
+    %li.nav-item.dropdown
+      %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        %img.avatar.avatar-sm{:alt => "logo", :src => "./imgs/avatar-1.png"}/
+        %span.small.ml-1.d-md-down-none
+        = "#{current_user&.name} #{current_user&.last_name}"
+      .dropdown-menu.dropdown-menu-right
+        .dropdown-header Cuenta
+        %a.dropdown-item{:href => close_session_path(current_user)}
+          %i.fa.fa-user
+          Perfil
+        %a.dropdown-item{:href => close_session_path(current_user)}
+          %i.fa.fa-envelope
+          Mensajes
+        .dropdown-header Settings
+        %a.dropdown-item{:href => close_session_path(current_user)}
+          %i.fa.fa-bell
+          Notificaciones
+        %a.dropdown-item{:href => close_session_path(current_user)}
+          %i.fa.fa-wrench
+          Settings
+        %a.dropdown-item{:href => close_session_path(current_user)}
+          %i.fa.fa-lock
           Salir
+.main-container
+  .sidebar
+    %nav.sidebar-nav
+      %ul.nav
+        %li.nav-title Navigation
+        %li.nav-item
+          %a.nav-link.active{:href => user_babies_path(current_user)}
+            %i.icon.icon-speedometer
+            Mi bebe
+        %li.nav-item
+          %a.nav-link.active{:href => user_baby_feed_path(session[:user_id], Baby.last.id) }
+            %i.icon.icon-speedometer
+            Tomas
+        %li.nav-item
+          %a.nav-link.active{:href => "index.html"}
+            %i.icon.icon-speedometer
+            Peso y altura
+        %li.nav-item
+          %a.nav-link.active{:href => "index.html"}
+            %i.icon.icon-speedometer
+            Proximos chequeos
+        %li.nav-item
+          %a.nav-link.active{:href => "index.html"}
+            %i.icon.icon-speedometer
+            Vacunas
+        %li.nav-item
+          %a.nav-link.active{:href => close_session_path }
+            %i.icon.icon-speedometer
+            Salir
 
 
 

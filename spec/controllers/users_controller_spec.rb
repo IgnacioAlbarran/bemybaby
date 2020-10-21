@@ -3,9 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
 
   let!(:valid_attributes) {{ 'name' => 'Adrian', 'last_name' => 'Stevenson', 'email' => 'adrian@stevenson.com', 'password' => 'XXXxxx99', 'level' => 1 }}
-
   let!(:invalid_attributes) {{ 'name' => 'Adrian', 'last_name' => 'Stevenson', 'email' => 99999999, 'password' => 'XXXxxx88', 'level' => 1 }}
-
   let!(:valid_session) { {} }
 
   describe "GET #index" do

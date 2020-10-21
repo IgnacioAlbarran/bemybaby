@@ -12,3 +12,7 @@
 
 .content
 = yield
+
+.alert-message
+  - if notice || @message
+    %p#notice= notice || @message

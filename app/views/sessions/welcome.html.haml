@@ -1,8 +1,12 @@
-.container.align-items-center
-  .row.justify-content-center
-    %h1 BeMyBaby
-  .row.justify-content-center
-    %h4 The best baby diary for parents
-    %p
+%link{:href => "https://fonts.googleapis.com/css?family=Lobster", :rel => "stylesheet", :type => "text/css"}
+.container.offset-1
+  .row
+    %h1.main-title BeMyBaby
+.container.offset-1
+  .row
+    %h7 The best baby diary for parents
+.container.offset-2
+  .row
+    %p.container
       = button_to "Entrar", new_session_path, method: :get
       = button_to "Registrarse", new_user_path, method: :get
