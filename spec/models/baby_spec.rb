@@ -24,17 +24,17 @@ RSpec.describe Baby, type: :model do
 
   it 'a baby with NO same name, last_name, dob and blood_type is valid' do
     new_baby_attributes = {
-      name: "Jaimito", last_name: "El picaro", dob: "2018-01-01", gender: "niño",
-      blood_type: "A-", user_id: father.id, created_at: Time.now, updated_at: Time.now
+      name: 'Jaimito', last_name: 'El picaro', dob: '2018-01-01', gender: 'niño',
+      blood_type: 'A-', user_id: father.id, created_at: Time.now, updated_at: Time.now
     }
 
     expect(Baby.new(new_baby_attributes)).to be_valid
   end
 
-  it "a baby with SAME name, last_name, dob and blood_type is invalid" do
+  it 'a baby with SAME name, last_name, dob and blood_type is invalid' do
     existing_baby_attributes = {
-      name: "Pepito", last_name: "Piscinas Jr", dob: "2018-01-01", gender: "niño",
-      blood_type: "A-", user_id: father.id, created_at: Time.now, updated_at: Time.now
+      name: 'Pepito', last_name: 'Piscinas Jr', dob: '2018-01-01', gender: 'niño',
+      blood_type: 'A-', user_id: father.id, created_at: Time.now, updated_at: Time.now
     }
 
     expect(Baby.new(existing_baby_attributes)).not_to be_valid
