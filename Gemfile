@@ -46,7 +46,7 @@ gem "bootstrap-datepicker-rails", '~> 1.8.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'rubocop', '~> 0.39.0'
+gem 'rubocop', '~> 0.39.0', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.9'
