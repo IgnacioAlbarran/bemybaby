@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "users/edit", type: :view do
   before(:each) do
-    @user = assign(:user, User.create!(
-      :email => "email@email.com",
-      :password => "MyString",
-      :level => 1
-    ))
+    @user = create(:user)
   end
 
   it "renders the edit user form" do
@@ -14,11 +10,15 @@ RSpec.describe "users/edit", type: :view do
 
     assert_select "form[action=?][method=?]", user_path(@user), "post" do
 
-      assert_select "input[name=?]", "user[email]"
+      assert_select "form input", id: 'Nombre'
 
-      assert_select "input[name=?]", "user[password]"
+      assert_select "form input", id: 'user_last_name'
 
-      assert_select "input[name=?]", "user[level]"
+      assert_select "form input", id: 'user_email'
+
+      assert_select "form input", id: 'user_password'
+
+      assert_select "form input", id: 'user_password_confirmation'
     end
   end
 end

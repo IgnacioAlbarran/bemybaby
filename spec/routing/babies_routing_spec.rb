@@ -21,9 +21,8 @@ RSpec.describe BabiesController, type: :routing do
       expect(:get => "users/1/babies/1/edit").to route_to("babies#edit", :user_id => '1', :id => "1")
     end
 
-
     it "routes to #create" do
-      expect(:post => "users/1/babies").to route_to("babies#create", :user_id => '1', :user_id => '1')
+      expect(:post => "users/1/babies").to route_to("babies#create", :user_id => '1')
     end
 
     it "routes to #update via PUT" do

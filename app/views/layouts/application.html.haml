@@ -15,7 +15,7 @@
       = render 'layouts/shared/header'
       .main-container
         .sidebar
-          = render 'layouts/shared/menu', user_id: params[:user_id]
+          = render 'layouts/shared/menu', user_id: session[:user_id]
         .content
           = yield
     .alert-message
