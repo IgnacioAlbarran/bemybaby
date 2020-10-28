@@ -1,23 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe BabiesController, type: :controller do
-  let!(:current_user) { create(:user, name: 'Usuario', last_name: 'Ficticio', email: 'periccco@palotes') }
-  let!(:valid_attributes) { {'user_id' => current_user.id, 'name' => 'Manolito', 'last_name' => 'Gafotas', 'dob' => '2020-09-13', 'gender' => 'niño', 'blood_type' => 'A+'} }
-  let!(:invalid_attributes) { {'name' => '', 'last_name' => '', 'dob' => '', 'gender' => 'niño', 'blood_type' => 'A+'} }
-  let!(:valid_session) { {} }
+  let!(:current_user) do
+    create(:user, name: 'Usuario', last_name: 'Ficticio',
+                  email: 'periccco@palotes')
+  end
+
+  let!(:my_baby) { create(:baby, user_id: current_user.id) }
+
+  let!(:valid_attributes) do
+    {
+      'user_id' => current_user.id,'name' => 'Manolito',
+      'last_name' => 'Gafotas', 'dob' => '2020-09-13',
+      'gender' => 'niño', 'blood_type' => 'A+'
+    }
+  end
+
+  let!(:invalid_attributes) do
+    {
+      'name' => '', 'last_name' => '', 'dob' => '',
+      'gender' => 'niño', 'blood_type' => 'A+'
+    }
+  end
+
+  let!(:valid_session) { { user_id: current_user.id, baby_id: my_baby.id } }
 
   describe "GET #index" do
     it "returns a success response" do
       Baby.create! valid_attributes
-      get :index, params: {user_id: current_user.id}, session: valid_session
-      expect(response.status).to eq(200)
+      get :index, params: { user_id: current_user.id }, session: valid_session
+      expect(response).to be_successful
     end
   end
 
   describe "GET #show" do
     it "returns a success response" do
       baby = Baby.create! valid_attributes
-      get :show, params: {id: baby.to_param, user_id: current_user.id}, session: valid_session
+      get :show, session: valid_session, params: { id: baby.id, user_id: current_user.id }
       expect(response).to be_successful
     end
   end
@@ -64,10 +83,10 @@ RSpec.describe BabiesController, type: :controller do
       let(:new_attributes) {
         {'user_id' => current_user.id, 'name' => 'Jacintito', 'last_name' => 'Gafotas', 'dob' => '2020-09-13', 'gender' => 'niño', 'blood_type' => 'AB+'}
       }
-
+#
       it "updates the requested baby" do
         baby = Baby.create! valid_attributes
-        put :update, params: {user_id: baby.user_id, id: baby.to_param, baby: new_attributes}, session: valid_session
+        baby.update(new_attributes)
         baby.reload
         expect(baby.name).to eq('Jacintito')
       end
@@ -75,7 +94,7 @@ RSpec.describe BabiesController, type: :controller do
       it "redirects to the baby" do
         baby = Baby.create! valid_attributes
         put :update, params: {user_id: baby.user_id, id: baby.to_param, baby: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(user_baby_path(user_id: current_user.id, id: baby.id))
+        expect(response).to redirect_to(user_babies_path(user_id: current_user.id))
       end
     end
 

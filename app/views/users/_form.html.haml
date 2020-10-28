@@ -2,13 +2,13 @@
   .col-md-5
     .card.p-4
       .card-header.text-center.text-uppercase.h4.font-weight-light
-        Please Sign Up
+        Edita tu usuario
       .card-body.py-5
         = bootstrap_form_for(@user, layout: :horizontal) do |f|
-          = f.text_field :name, layout: :default
-          = f.text_field :last_name, layout: :default
-          = f.email_field :email, layout: :default
-          = f.password_field :password, layout: :default
-          = f.password_field :password_confirmation, layout: :default
+          = f.text_field :name, label: 'Nombre', layout: :default
+          = f.text_field :last_name, label: 'Apellido', layout: :default
+          = f.email_field :email, label: 'Email', layout: :default
+          = f.password_field :password, label: 'Contraseña', layout: :default
+          = f.password_field :password_confirmation, label: 'Confirma contraseña', layout: :default
           = f.form_group do
-            = f.submit
+            = f.submit 'Actualizar usuario'
