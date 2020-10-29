@@ -10,16 +10,14 @@ class FeedsController < ApplicationController
     @user = User.last
     @baby = Baby.find(session[:baby_id])
     @feed = Feed.new
+    @feed.hour = Time.now
   end
 
   # POST /feeds
   # POST /feeds.json
   def create
-    @baby = Baby.find(session[:baby_id]) || nil
-    @user = @baby.user
     @feed = Feed.new(feed_params)
-    @feed[:baby_id] = @baby.id
-    @feed[:hour] = @feed[:hour].utc
+    @feed[:baby_id] = session[:baby_id]
 
     respond_to do |format|
       if @feed.save
