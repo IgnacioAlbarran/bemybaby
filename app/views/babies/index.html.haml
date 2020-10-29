@@ -1,32 +1,25 @@
-.container.align-items-center
-  %h1 Mis bebés
-
-  %table
-    %thead
+%h2.table-title Mis bebés
+%table.table
+  %thead
+    %tr
+      %th Nombre
+      %th Apellido
+      %th Dob
+      %th Sexo
+      %th Grupo Sanguineo
+      %th
+  %tbody
+    - @babies.each do |baby|
       %tr
-        %th Nombre
-        %th Apellido
-        %th Dob
-        %th Sexo
-        %th Grupo Sanguineo
-        %th
-        %th
-        %th
-        %th
-
-    %tbody
-      - @babies.each do |baby|
-        %tr
-          %td= baby.name
-          %td= baby.last_name
-          %td= baby.dob
-          %td= baby.gender
-          %td= baby.blood_type
+        %td= baby.name
+        %td= baby.last_name
+        %td= baby.dob
+        %td= baby.gender
+        %td= baby.blood_type
+        - if baby.id != session[:baby_id].to_i
           %td= link_to 'Seleccionar', select_baby_path(baby.id)
-          %td= link_to 'Ver', user_baby_path(params[:user_id], baby.id)
-          %td= link_to 'Editar', edit_user_baby_path(params[:user_id], baby.id)
-          %td= link_to 'Borrar', user_baby_path(params[:user_id], baby.id), method: :delete, data: { confirm: 'Are you sure?' }
+        - else
+          %td= link_to 'Editar', edit_user_baby_path(session[:user_id], baby.id)
+%br
 
-  %br
-
-  = link_to 'New Baby', new_user_baby_path(params[:user_id])
+= link_to 'New Baby', new_user_baby_path(session[:user_id])

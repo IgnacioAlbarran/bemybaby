@@ -62,3 +62,31 @@
   font-style: bold;
   font-size: 350%;
 }
+
+.table-title {
+  color: black;
+}
+
+.table {
+  width: 100%;
+  border: none;
+  border-spacing: 0;
+  margin: 5 ;
+  text-align: center;
+  color: black;
+
+  tr {
+    &:first-child {
+      color: black;
+      background-color: transparent;
+    }
+
+    &:nth-child(2n) {
+      background-color: transparent;
+    }
+  }
+
+  a {
+    color: black;
+  }
+}

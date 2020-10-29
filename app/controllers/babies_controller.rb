@@ -1,10 +1,10 @@
 class BabiesController < ApplicationController
-  before_action :set_baby, only: [:show, :edit, :update, :destroy]
+  before_action :set_baby_and_user, only: [:show, :edit, :update, :destroy]
 
   # GET /babies
   # GET /babies.json
   def index
-    @babies = Baby.where(user_id: params[:user_id])
+    @babies = Baby.where(user_id: session[:user_id])
     if @babies.nil?
       render new_user_baby_path
     end
@@ -17,7 +17,7 @@ class BabiesController < ApplicationController
 
   # GET /babies/new
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(session[:user_id])
     @baby = Baby.new
   end
 
@@ -44,10 +44,9 @@ class BabiesController < ApplicationController
   # PATCH/PUT /babies/1
   # PATCH/PUT /babies/1.json
   def update
-    @user = User.find(params[:user_id])
     respond_to do |format|
-      if @user.babies.find(@baby.id).update(baby_params)
-        format.html { redirect_to user_baby_path(@baby.user_id, @baby.id), notice: 'Baby was successfully updated.' }
+      if @baby.update(baby_params)
+        format.html { redirect_to user_babies_path(@baby.user_id), notice: 'Baby was successfully updated.' }
         format.json { render :show, status: :ok, location: @baby }
       else
         format.html { render :edit }
@@ -59,7 +58,6 @@ class BabiesController < ApplicationController
   # DELETE /babies/1
   # DELETE /babies/1.json
   def destroy
-    @user = User.find(params[:user_id])
     @user.babies.find(@baby.id).destroy
     respond_to do |format|
       format.html { redirect_to user_babies_path, notice: 'Baby was successfully destroyed.' }
@@ -70,12 +68,13 @@ class BabiesController < ApplicationController
   def select_baby
     @baby = Baby.find(params[:baby_id])
     session[:baby_id] = params[:baby_id]
-    redirect_to user_baby_path(@baby.user.id, @baby.id), notice: "Bebe seleccionado: #{@baby.name}"
+    redirect_to user_babies_path(@baby.user.id), notice: "Bebe seleccionado: #{@baby.name}"
   end
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_baby
-      @baby = Baby.find(params[:id])
+    def set_baby_and_user
+      @user = User.find(session[:user_id])
+      @baby = Baby.find(session[:baby_id])
     end
 
     # Only allow a list of trusted parameters through.
