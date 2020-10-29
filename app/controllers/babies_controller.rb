@@ -6,7 +6,7 @@ class BabiesController < ApplicationController
   def index
     @babies = Baby.where(user_id: session[:user_id])
     if @babies.nil?
-      render new_user_baby_path
+      render new_baby_path
     end
   end
 
@@ -29,11 +29,11 @@ class BabiesController < ApplicationController
   # POST /babies.json
   def create
     @baby = Baby.new(baby_params)
-    @baby[:user_id] = session[:user_id]
+    @baby.user_id = session[:user_id]
 
     respond_to do |format|
       if @baby.save
-        format.html { redirect_to user_baby_path(@baby.user_id, @baby.id), notice: 'Baby was successfully created.' }
+        format.html { redirect_to babies_path, notice: 'Baby was successfully created.' }
         format.json { render :show, status: :created, location: @baby }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class BabiesController < ApplicationController
   def update
     respond_to do |format|
       if @baby.update(baby_params)
-        format.html { redirect_to user_babies_path(@baby.user_id), notice: 'Baby was successfully updated.' }
+        format.html { redirect_to babies_path, notice: 'Baby was successfully updated.' }
         format.json { render :show, status: :ok, location: @baby }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class BabiesController < ApplicationController
   def destroy
     @user.babies.find(@baby.id).destroy
     respond_to do |format|
-      format.html { redirect_to user_babies_path, notice: 'Baby was successfully destroyed.' }
+      format.html { redirect_to babies_path, notice: 'Baby was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,7 +68,7 @@ class BabiesController < ApplicationController
   def select_baby
     @baby = Baby.find(params[:baby_id])
     session[:baby_id] = params[:baby_id]
-    redirect_to user_babies_path(@baby.user.id), notice: "Bebe seleccionado: #{@baby.name}"
+    redirect_to babies_path, notice: "Bebe seleccionado: #{@baby.name}"
   end
   private
     # Use callbacks to share common setup or constraints between actions.

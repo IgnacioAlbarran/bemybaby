@@ -11,7 +11,7 @@ RSpec.describe "babies/new", type: :view do
   it "renders new baby form" do
     render
 
-    assert_select "form[action=?][method=?]", user_babies_path(session[:user_id]), "post" do
+    assert_select "form[action=?][method=?]", babies_path, "post" do
     end
   end
 end

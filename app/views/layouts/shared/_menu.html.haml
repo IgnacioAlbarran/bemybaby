@@ -1,14 +1,14 @@
-.sidebar
+.sidebar.primary
   %nav.sidebar-nav
     %ul.nav
       %li.nav-title
         = "Bebé seleccionado: #{Baby.find_by(id: session[:baby_id])&.name || 'ninguno'}"
       %li.nav-item
-        %a.nav-link.active{:href => user_babies_path(session[:user_id])}
+        %a.nav-link.active{:href => babies_path(session[:user_id])}
           %i.icon.icon-speedometer
           Mi bebe
       %li.nav-item
-        %a.nav-link.active{:href => user_baby_feeds_path(session[:user_id], Baby.last.id) }
+        %a.nav-link.active{:href => feeds_path }
           %i.icon.icon-speedometer
           Tomas
       %li.nav-item

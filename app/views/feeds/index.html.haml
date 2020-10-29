@@ -18,4 +18,4 @@
 %p
   = "El total de hoy es de #{@daily_feeds} ml"
 %p
-  = link_to 'Nueva toma', new_user_baby_feed_path(session[:user_id], Baby.last.id)
+  = link_to 'Nueva toma', new_feed_path(session[:baby_id])

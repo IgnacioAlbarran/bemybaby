@@ -36,6 +36,8 @@ gem 'font-awesome-sass', '~> 5.5.0'
 gem 'xray-rails'
 gem "bootstrap_form", '~> 4.0'
 gem "bootstrap-datepicker-rails", '~> 1.8.0'
+gem 'data-confirm-modal'
+gem 'bootstrap-select-rails'
 
 
 # Use ActiveStorage variant
@@ -46,7 +48,7 @@ gem "bootstrap-datepicker-rails", '~> 1.8.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'rubocop', '~> 0.39.0', require: false
+gem 'rubocop', '>=0.49.0', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.9'

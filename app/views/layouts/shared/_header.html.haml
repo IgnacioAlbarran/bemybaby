@@ -16,7 +16,7 @@
         %span.badge.badge-pill.badge-danger 5
     %li.nav-item.dropdown
       %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-        %img.avatar.avatar-sm{:alt => "logo", :src => "/assets/images/avatar-1.png"}/
+        %img.avatar.avatar-sm{:alt => "logo", :src => "./imgs/avatar-1.png"}/
         %span.small.ml-1.d-md-down-none John Smith
       .dropdown-menu.dropdown-menu-right
         .dropdown-header Account
@@ -36,3 +36,9 @@
         %a.dropdown-item{:href => "#"}
           %i.fa.fa-lock
           Logout
+%script{:src => "./vendor/jquery/jquery.min.js"}
+%script{:src => "./vendor/popper.js/popper.min.js"}
+%script{:src => "./vendor/bootstrap/js/bootstrap.min.js"}
+%script{:src => "./vendor/chart.js/chart.min.js"}
+%script{:src => "./js/carbon.js"}
+%script{:src => "./js/demo.js"}

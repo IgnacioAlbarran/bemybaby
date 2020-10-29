@@ -1,5 +1,5 @@
 %h1 Los datos de mi bebé
-= form_for [@user, @baby] do |f|
+= form_for [@baby] do |f|
   - if @baby.errors.any?
     #error_explanation
       %h2= "#{pluralize(@baby.errors.count, "error")} prohibited this baby from being saved:"

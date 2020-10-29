@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', user_baby_path(@baby.user_id, @baby)
+= link_to 'Show', baby_path(@baby)
 \|
-= link_to 'Back', user_babies_path(@baby.user_id)
+= link_to 'Back', babies_path(@baby.user_id)

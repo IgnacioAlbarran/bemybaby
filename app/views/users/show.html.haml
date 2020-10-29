@@ -21,7 +21,7 @@
     = link_to "#{baby.name} #{baby.last_name}", user_baby_path(baby)
 %br
 %p
-  = button_to 'Añadir bebé', new_user_baby_path(@user), method: :get
+  = button_to 'Añadir bebé', new_baby_path(@user), method: :get
 
 = link_to 'Edit', edit_user_path(@user)
 \|

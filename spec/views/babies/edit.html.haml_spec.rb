@@ -10,7 +10,7 @@ RSpec.describe "babies/edit", type: :view do
   it "renders the edit baby form" do
     render
 
-    assert_select "form[action=?][method=?]", user_baby_path(session[:user_id], @baby), "post" do
+    assert_select "form[action=?][method=?]", baby_path(@baby), "post" do
     end
   end
 end

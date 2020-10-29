@@ -1,12 +1,11 @@
-
 Rails.application.routes.draw do
+
   # SessionsController
   root to: 'sessions#welcome'
   get 'new_session', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'close_session', to: 'sessions#close_session'
   get 'select_baby/:baby_id', to: 'babies#select_baby', as: 'select_baby'
-  # post 'update_baby', to: 'babies#update'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # UsersController
@@ -22,25 +21,25 @@ Rails.application.routes.draw do
   delete '/users/:id', to: 'users#destroy'
 
   # BabiesController
-  get '/babies', to: 'babies#index', as: 'user_babies'
+  get '/babies', to: 'babies#index', as: 'babies'
   post '/babies', to: 'babies#create'
 
-  get '/babies/new', to: 'babies#new', as: 'new_user_baby'
-  get '/babies/:id/edit', to: 'babies#edit', as: 'edit_user_baby'
+  get '/babies/new', to: 'babies#new', as: 'new_baby'
+  get '/babies/:id/edit', to: 'babies#edit', as: 'edit_baby'
 
-  get '/babies/:id', to: 'babies#show', as: 'user_baby'
+  get '/babies/:id', to: 'babies#show', as: 'baby'
   patch '/babies/:id', to: 'babies#update'
   put '/babies/:id', to: 'babies#update'
   delete '/babies/:id', to: 'babies#destroy'
 
   # FeedsController
-  get	'/feeds', to: 'feeds#index', as: 'user_baby_feeds'
+  get '/feeds', to: 'feeds#index', as: 'feeds'
   post '/feeds', to: 'feeds#create'
 
-  get '/feeds/new', to: 'feeds#new', as: 'new_user_baby_feed'
-  get '/feeds/:id/edit', to: 'feeds#edit', as: 'edit_user_baby_feed'
+  get '/feeds/new', to: 'feeds#new', as: 'new_feed'
+  get '/feeds/:id/edit', to: 'feeds#edit', as: 'edit_feed'
 
-  get '/feeds/:id', to: 'feeds#show', as: 'user_baby_feed'
+  get '/feeds/:id', to: 'feeds#show', as: 'feed'
   patch '/feeds/:id', to: 'feeds#update'
   put '/feeds/:id', to: 'feeds#update'
   delete '/feeds/:id', to: 'feeds#destroy'

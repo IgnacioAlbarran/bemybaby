@@ -1,5 +1,5 @@
 %h2.table-title Mis bebés
-%table.table
+%table.table.table-responsive-xl
   %thead
     %tr
       %th Nombre
@@ -19,7 +19,7 @@
         - if baby.id != session[:baby_id].to_i
           %td= link_to 'Seleccionar', select_baby_path(baby.id)
         - else
-          %td= link_to 'Editar', edit_user_baby_path(session[:user_id], baby.id)
+          %td= link_to 'Editar', edit_baby_path(baby.id)
 %br
 
-= link_to 'New Baby', new_user_baby_path(session[:user_id])
+= link_to 'New Baby', new_baby_path

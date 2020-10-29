@@ -62,7 +62,7 @@
  * Bootstrap
  */
 
-:root {
+ :root {
   --blue: #42a5f5;
   --indigo: #3F51B5;
   --purple: #9C27B0;
@@ -185,10 +185,6 @@ html {
   width: device-width;
 }
 
-@-ms-viewport {
-  height: device-height;
-}
-
 article,
 aside,
 dialog,
@@ -209,9 +205,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #444;
+  color: rgb(116, 114, 114);
   text-align: left;
-  background-color: #ff7e00 ;
+  background-color: #ffffff;
 }
 
 [tabindex="-1"]:focus {
@@ -312,7 +308,7 @@ sup {
 }
 
 a {
-  color: #777;
+  color: green;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -9828,6 +9824,7 @@ a.text-dark:hover {
 
 .header-fixed .page-header {
   position: fixed;
+  background: lightgrey;
 }
 
 .header-fixed .sidebar {
@@ -9843,7 +9840,7 @@ a.text-dark:hover {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 240px;
-  background-color: #272727;
+  background-color: #efefef;
   min-height: calc(100vh - 60px);
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -9879,14 +9876,14 @@ a.text-dark:hover {
   display: block;
   text-decoration: none;
   padding: 16px 24px;
-  color: #ff7e00;
+  color: #9d9d9d;
 }
 
 .sidebar .nav-link i:first-of-type {
   display: inline-block;
   width: 24px;
   margin-right: 4px;
-  color: #ff7e00;
+  color: black;
   font-size: 14px;
 }
 
@@ -9899,11 +9896,11 @@ a.text-dark:hover {
 }
 
 .sidebar .nav-link.active {
-  color: #ff7e00;
+  color: green;
 }
 
 .sidebar .nav-link.active i {
-  color: #ff7e00;
+  color: green;
 }
 
 .sidebar .nav-dropdown-toggle i:last-of-type {
@@ -9915,7 +9912,7 @@ a.text-dark:hover {
   font-size: 80%;
   text-transform: uppercase;
   padding: 16px 24px;
-  color: #c4c3c3;
+  color: rgb(116, 114, 114);
 }
 
 .sidebar .nav-dropdown.open .nav-dropdown-items {
@@ -9946,7 +9943,7 @@ a.text-dark:hover {
   height: 60px;
   width: 100%;
   position: relative;
-  background-color: #272727;
+  background-color: #fff;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   -webkit-box-orient: horizontal;
@@ -10296,4 +10293,3 @@ h6 {
 /**
  * Vendor Overrides
  */
-

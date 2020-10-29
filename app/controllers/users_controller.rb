@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        format.html { redirect_to user_babies_path(@user.id), notice: 'User was successfully created.' }
+        format.html { redirect_to babies_path, notice: 'User was successfully created.' }
       else
         @message = @user.errors.full_messages
         format.html { render :new }
