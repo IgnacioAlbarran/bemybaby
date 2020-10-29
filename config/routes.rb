@@ -22,26 +22,26 @@ Rails.application.routes.draw do
   delete '/users/:id', to: 'users#destroy'
 
   # BabiesController
-  get '/users/:user_id/babies', to: 'babies#index', as: 'user_babies'
-  post '/users/:user_id/babies', to: 'babies#create'
+  get '/babies', to: 'babies#index', as: 'user_babies'
+  post '/babies', to: 'babies#create'
 
-  get '/users/:user_id/babies/new', to: 'babies#new', as: 'new_user_baby'
-  get '/users/:user_id/babies/:id/edit', to: 'babies#edit', as: 'edit_user_baby'
+  get '/babies/new', to: 'babies#new', as: 'new_user_baby'
+  get '/babies/:id/edit', to: 'babies#edit', as: 'edit_user_baby'
 
-  get '/users/:user_id/babies/:id', to: 'babies#show', as: 'user_baby'
-  patch '/users/:user_id/babies/:id', to: 'babies#update'
-  put '/users/:user_id/babies/:id', to: 'babies#update'
-  delete '/users/:user_id/babies/:id', to: 'babies#destroy'
+  get '/babies/:id', to: 'babies#show', as: 'user_baby'
+  patch '/babies/:id', to: 'babies#update'
+  put '/babies/:id', to: 'babies#update'
+  delete '/babies/:id', to: 'babies#destroy'
 
   # FeedsController
-  get	'/users/:user_id/babies/:baby_id/feeds', to: 'feeds#index', as: 'user_baby_feeds'
-  post '/users/:user_id/babies/:baby_id/feeds', to: 'feeds#create'
+  get	'/feeds', to: 'feeds#index', as: 'user_baby_feeds'
+  post '/feeds', to: 'feeds#create'
 
-  get '/users/:user_id/babies/:baby_id/feeds/new', to: 'feeds#new', as: 'new_user_baby_feed'
-  get '/users/:user_id/babies/:baby_id/feeds/:id/edit', to: 'feeds#edit', as: 'edit_user_baby_feed'
+  get '/feeds/new', to: 'feeds#new', as: 'new_user_baby_feed'
+  get '/feeds/:id/edit', to: 'feeds#edit', as: 'edit_user_baby_feed'
 
-  get '/users/:user_id/babies/:baby_id/feeds/:id', to: 'feeds#show', as: 'user_baby_feed'
-  patch '/users/:user_id/babies/:baby_id/feeds/:id', to: 'feeds#update'
-  put '/users/:user_id/babies/:baby_id/feeds/:id', to: 'feeds#update'
-  delete '/users/:user_id/babies/:baby_id/feeds/:id', to: 'feeds#destroy'
+  get '/feeds/:id', to: 'feeds#show', as: 'user_baby_feed'
+  patch '/feeds/:id', to: 'feeds#update'
+  put '/feeds/:id', to: 'feeds#update'
+  delete '/feeds/:id', to: 'feeds#destroy'
 end

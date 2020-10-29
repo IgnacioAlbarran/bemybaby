@@ -29,7 +29,7 @@ class BabiesController < ApplicationController
   # POST /babies.json
   def create
     @baby = Baby.new(baby_params)
-    @baby[:user_id] = params[:user_id]
+    @baby[:user_id] = session[:user_id]
 
     respond_to do |format|
       if @baby.save
