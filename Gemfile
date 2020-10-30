@@ -30,7 +30,7 @@ gem 'haml-rails'
 gem 'pg'
 gem 'bcrypt'
 gem 'popper_js', '~> 1.11', '>= 1.11.1'
-gem 'bootstrap', '~> 5.0.0.alpha1'
+gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.5.0'
 gem 'xray-rails'
@@ -56,6 +56,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'ffaker'
+  gem 'cypress-on-rails', '>= 1.0'
 end
 
 group :development do
