@@ -17,10 +17,9 @@ rescue LoadError => e
   end
 end
 
-
-  require 'cypress_on_rails/smart_factory_wrapper'
-  require "spree/testing_support/factories"
-  require "carmen"
+require 'cypress_on_rails/smart_factory_wrapper'
+require "spree/testing_support/factories"
+require "carmen"
 
 
 Dir[Rails.root.join("spec", "support", "factories", "**", "*.rb")].each { |f| require f }

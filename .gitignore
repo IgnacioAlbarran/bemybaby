@@ -27,5 +27,8 @@
 /public/assets
 .byebug_history
 
+# Ignore videos and image captures from cypress tests
+spec/cypress/screenshots/All Specs/*
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
