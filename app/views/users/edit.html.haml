@@ -1,5 +1,12 @@
 = render 'form'
-
-= link_to 'Mostrar', @user
-\|
-= link_to 'Atrás', users_path
+%p
+  %b Babies:
+  %b
+  - @user.babies.each do |baby|
+    %br
+    =  "#{baby.name} #{baby.last_name}"
+%br
+%p
+  = link_to 'Mostrar', @user
+  \|
+  = link_to 'Atrás', users_path

@@ -4,7 +4,7 @@
       %li.nav-title
         = "Bebé seleccionado: #{Baby.find_by(id: session[:baby_id])&.name || 'ninguno'}"
       %li.nav-item
-        %a.nav-link.active{:href => babies_path(session[:user_id])}
+        %a.nav-link.active{:href => babies_path}
           %i.icon.icon-speedometer
           Mi bebe
       %li.nav-item
