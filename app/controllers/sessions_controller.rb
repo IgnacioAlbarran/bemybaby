@@ -20,6 +20,8 @@ class SessionsController < ApplicationController
   end
 
   def close_session
+    session[:user_id] = nil
+    session[:baby_id] = nil
     log_out
     redirect_to root_path
   end
