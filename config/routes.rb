@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   put '/babies/:id', to: 'babies#update'
   delete '/babies/:id', to: 'babies#destroy'
 
+  post '/delete_baby/:id', to: 'babies#delete_baby', as: 'delete_baby'
+
   # FeedsController
   get '/feeds', to: 'feeds#index', as: 'feeds'
   post '/feeds', to: 'feeds#create'

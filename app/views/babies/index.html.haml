@@ -20,6 +20,7 @@
           %td= link_to 'Seleccionar', select_baby_path(baby.id)
         - else
           %td= link_to 'Editar', edit_baby_path(baby.id)
+          %td= link_to 'Borrar', delete_baby_path(baby.id), method: :post, data: { confirm: 'Are you sure?' }
 %br
 
-= link_to 'New Baby', new_baby_path
+= link_to 'Registrar bebé', new_baby_path

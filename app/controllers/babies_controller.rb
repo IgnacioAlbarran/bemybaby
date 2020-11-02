@@ -4,7 +4,7 @@ class BabiesController < ApplicationController
   # GET /babies
   # GET /babies.json
   def index
-    @babies = Baby.where(user_id: session[:user_id])
+    @babies = Baby.where(user_id: session[:user_id]).active
     if @babies.nil?
       render new_baby_path
     end
@@ -70,15 +70,25 @@ class BabiesController < ApplicationController
     session[:baby_id] = params[:baby_id]
     redirect_to babies_path, notice: "Bebe seleccionado: #{@baby.name}"
   end
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_baby_and_user
-      @user = User.find(session[:user_id])
-      @baby = Baby.find(session[:baby_id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def baby_params
-      params.require(:baby).permit(:name, :last_name, :dob, :gender, :blood_type, :user_id)
+  def delete_baby
+    if Baby.find(params[:id]).update(deleted_at: Time.now)
+      session[:baby_id] = nil
+      respond_to do |format|
+        format.html { redirect_to babies_path, notice: 'Baby was successfully deleted.' }
+      end
     end
+  end
+
+private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_baby_and_user
+    @user = User.find(session[:user_id])
+    @baby = Baby.find(session[:baby_id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def baby_params
+    params.require(:baby).permit(:name, :last_name, :dob, :gender, :blood_type, :user_id)
+  end
 end

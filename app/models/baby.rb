@@ -6,6 +6,8 @@ class Baby < ApplicationRecord
   validates :name, :last_name, :dob, :gender, :blood_type, presence: true
   validates_with BabyValidator, on: :create
 
+  scope :active, -> { where(deleted_at: nil) }
+
   enum blood_type: {
     'A+': 'A+',
     'A-': 'A-',
