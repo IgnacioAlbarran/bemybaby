@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :heights
+  resources :weights
   # SessionsController
   root to: 'sessions#welcome'
   get 'new_session', to: 'sessions#new'

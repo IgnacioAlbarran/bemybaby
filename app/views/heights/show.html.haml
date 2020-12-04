@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Height:
+  = @height.height
+%p
+  %b Date:
+  = @height.date
+%p
+  %b Baby:
+  = @height.baby_id
+
+= link_to 'Edit', edit_height_path(@height)
+\|
+= link_to 'Back', heights_path

@@ -19,4 +19,7 @@
 //= require data-confirm-modal
 //= require bootstrap-datepicker/core
 //= require bootstrap-select
+//= require chartkick
+//= require Chart.bundle
 //= require_tree .
+

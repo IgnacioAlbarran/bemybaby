@@ -68,12 +68,9 @@
   color: rgb(116, 114, 114);
 }
 
-.table {
-  width: 800%;
+.my-table {
   border: none;
   border-spacing: 0;
-  padding: 15%;
-  margin: 5 ;
   text-align: center;
   color: rgb(116, 114, 114);
 
@@ -87,7 +84,22 @@
     }
   }
 
+  td {
+    border: solid black 1px;
+  }
+
   a {
     color: green;
   }
 }
+
+table.menu {
+  width: auto;
+  margin-right: 0px;
+  margin-left: auto;
+}
+
+.logo {
+  width: 50px;
+}
+
