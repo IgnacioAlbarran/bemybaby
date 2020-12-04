@@ -3,4 +3,3 @@ class ChartsController < ApplicationController
     render json: Feed.feeds_by_week_chart
   end
 end
-

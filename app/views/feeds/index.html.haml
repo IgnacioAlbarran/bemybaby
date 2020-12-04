@@ -9,13 +9,9 @@
 .container
   .row
     .col-sm
-      %h5 Tomas en el dia
-      %p
-        = render 'table'
+      = render 'table'
     .col-sm
-      %h5 Totales de la semana
-      %p
-        = render 'table_week'
+      = render 'table_week'
 %p
   = "El total de tomas en el dia:  #{@total_feeds} ml - La media diaria de la semana es:  #{@week_average} ml "
 .container
