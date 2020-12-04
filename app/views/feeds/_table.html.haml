@@ -1,0 +1,12 @@
+%table.table.table.striped
+  %thead
+    %tr
+      %th Dia
+      %th Hora
+      %th Cantidad
+  %tbody
+    - @feeds.each do |feed|
+      %tr
+        %td= feed.date.to_date.strftime("%A")
+        %td= feed.hour.strftime("%H:%M")
+        %td= feed.mililitres

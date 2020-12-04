@@ -38,7 +38,8 @@ gem "bootstrap_form", '~> 4.0'
 gem "bootstrap-datepicker-rails", '~> 1.8.0'
 gem 'data-confirm-modal'
 gem 'bootstrap-select-rails'
-
+gem 'chartkick', '~> 3.4', '>= 3.4.2'
+gem 'groupdate', '~> 5.2', '>= 5.2.1'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

@@ -5,5 +5,6 @@ FactoryBot.define do
     dob         { Date.new(2018) }
     gender      { 'niño' }
     blood_type  { 'A-' }
+    deleted_at  { nil }
   end
 end

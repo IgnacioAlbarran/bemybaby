@@ -1,21 +1,50 @@
-%h1 ¿Cómo vamos con el biberón?
+:javascript
+  $('#datepicker').datepicker({format: 'dd/mm/yyyy'})
 %p
-  %h2 Registro de la ultima semana
+  %h3 Registro de hoy
 %p
-  %table
-    %thead
-      %tr
-        %th Dia
-        %th Hora
-        %th Cantidad
-    %tbody
-      - @feeds.each do |feed|
-        %tr
-          %td= feed.date.strftime("%A")
-          %td= feed.hour.strftime("%H:%M")
-          %td= feed.mililitres
+  %button.btn.btn-success.btn-sm
+    = link_to 'Nueva toma', new_feed_path(session[:baby_id])
+%p
+.container
+  .row
+    .col-sm
+      %h5 Tomas en el dia
+      %p
+        = render 'table'
+    .col-sm
+      %h5 Totales de la semana
+      %p
+        = render 'table_week'
+%p
+  = "El total de tomas en el dia:  #{@total_feeds} ml - La media diaria de la semana es:  #{@week_average} ml "
+.container
+  .row
+    .col-sm
+      = form_with(url:feeds_path, method: :get, local: true) do |f|
+        .field{:style => "color: green" }
+          = f.label :date, 'Seleccionar otra fecha:'
+          %br
+          = f.date_field :date, id: :datepicker
+        .actions
+          %br
+          = f.submit 'Buscar'
+    .col-sm
+      = line_chart @data.group_by_day(:date).sum(:mililitres), width: "400px", height: "200"
+-# %p
+-#   = "El total de tomas en el dia:  #{@total_feeds} ml - La media diaria de la semana es:  #{@week_average} ml "
+-# %p
+-#   %button.btn.btn-success.btn-sm
+-#     = link_to 'Nueva toma', new_feed_path(session[:baby_id])
+-# %p
+-# = form_with url:feeds_path, method: :get do |f|
+-#   .field{:style => "color: green" }
+-#     = f.label :date, 'Seleccionar otra fecha:'
+-#     %br
+-#     = f.date_field :date, id: :datepicker
+-#   .actions
+-#     %br
+-# -#     = f.submit 'Buscar'
 
-%p
-  = "El total de hoy es de #{@daily_feeds} ml"
-%p
-  = link_to 'Nueva toma', new_feed_path(session[:baby_id])
+-# = line_chart @data.group_by_day(:date).sum(:mililitres), width: "400px", height: "200"
+

@@ -47,4 +47,49 @@ RSpec.describe Baby, type: :model do
 
     expect(Baby.new(existing_baby_attributes)).not_to be_valid
   end
+
+  it 'calculates the total ingested in a day for a baby' do
+    session = {}
+    session[:baby_id] = son.id
+
+    5.times do
+      create(:feed, baby_id: son.id,
+                    date: Date.today,
+                    hour: Time.now + Feed.count.minutes,
+                    mililitres: 50)
+    end
+
+    expect(son.total_feeds_in_the_day(Date.today)).to eq(250)
+  end
+
+  it 'calculates the list of feeds in a day sorted by hour' do
+    5.times do
+      create(:feed, baby_id: son.id,
+                    date: Date.today,
+                    hour: Time.now + Feed.count.minutes,
+                    mililitres: 50)
+    end
+
+    list = son.feed_list_day(Date.today)
+
+    expect(list.count).to eq(5)
+    expect(list.first.hour < list.second.hour).to eq(true)
+    expect(list.fourth.hour < list.fifth.hour).to eq(true)
+  end
+
+  it 'knows the daily totals of the whole week for the day selected' do
+    session = {}
+    session[:baby_id] = son.id
+
+    (0..6).each do |num|
+      create(:feed, baby_id: son.id,
+        date: Date.today.monday + num ,
+        hour: Time.now + Feed.count.minutes,
+        mililitres: 100 + (num * 100))
+    end
+
+    expect(son.feeds_week_by_day(Date.today).keys.count).to eq(7)
+    expect(son.feeds_week_by_day(Date.today)['Monday'][:mililitres]).to eq(100)
+    expect(son.feeds_week_by_day(Date.today)['Sunday'][:mililitres]).to eq(700)
+  end
 end

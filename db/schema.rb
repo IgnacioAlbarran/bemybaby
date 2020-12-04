@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_01_171249) do
+ActiveRecord::Schema.define(version: 2020_12_03_095413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 2020_11_01_171249) do
     t.index ["baby_id"], name: "index_feeds_on_baby_id"
   end
 
+  create_table "heights", force: :cascade do |t|
+    t.integer "height"
+    t.date "date"
+    t.integer "baby_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "measures", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "last_name"
@@ -48,4 +61,13 @@ ActiveRecord::Schema.define(version: 2020_11_01_171249) do
     t.string "password_digest"
     t.datetime "deleted_at"
   end
+
+  create_table "weights", force: :cascade do |t|
+    t.integer "weight"
+    t.date "date"
+    t.integer "baby_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end

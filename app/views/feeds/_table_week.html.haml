@@ -1,0 +1,10 @@
+%table.table.table.striped
+  %thead
+    %tr
+      %th Dia
+      %th Cantidad
+  %tbody
+    - @feeds_week.each do |k, v|
+      %tr
+        %td= k.to_s
+        %td= v[:mililitres]
