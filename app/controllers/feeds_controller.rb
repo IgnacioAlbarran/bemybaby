@@ -39,6 +39,16 @@ class FeedsController < ApplicationController
     end
   end
 
+  # DELETE /feeds/1
+  # DELETE /feeds/1.json
+  def destroy
+    Feed.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to feeds_path, notice: 'Feed was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def feed_params
