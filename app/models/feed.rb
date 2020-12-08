@@ -17,11 +17,17 @@ class Feed < ApplicationRecord
   def self.total_ml_week(feeds_week)
     total = []
     feeds_week.each_value{ |v| total << v[:mililitres] }
-    total = total.sum
+    total = total.sum || 0
   end
 
   def self.week_average(feeds_week)
-    total_ml_week(feeds_week) / feeds_week.values.pluck(:mililitres).select{ |x| x > 0 }.count
+    number_of_days_registered = feeds_week.values.pluck(:mililitres).select{ |x| x > 0 }.count
+    if number_of_days_registered > 0
+      total_ml_week(feeds_week) / feeds_week.values.pluck(:mililitres).select{ |x| x > 0 }.count
+    else
+      0
+    end
+
   end
 
   def feeds_week_by_day(reference_day)
@@ -41,7 +47,6 @@ class Feed < ApplicationRecord
     data = []
     data = @feeds_week.values.each { |day| chart << day.values }
   end
-
   private
 
   def feed_uniqueness_validation

@@ -45,4 +45,22 @@ class Baby < ApplicationRecord
     end
     return data
   end
+
+  def min_feed
+    minimum_feeds =  {
+      3 => 20,
+      7 => 60,
+      15 => 80,
+      30 => 110,
+      60 => 120,
+      90 => 150,
+      120 => 180,
+      150 => 210,
+      180 => 240,
+      1095 => 300
+    }
+
+    age_baby_days = (Date.today - self.dob).to_i
+    minimum_feeds[minimum_feeds.keys.select { |key| key > age_baby_days }.first]
+  end
 end

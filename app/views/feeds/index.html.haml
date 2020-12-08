@@ -1,10 +1,6 @@
-:javascript
-  $('#datepicker').datepicker({format: 'dd/mm/yyyy'})
-%p
-  %h3 Registro de hoy
-%p
-  %button.btn.btn-success.btn-sm
-    = link_to 'Nueva toma', new_feed_path(session[:baby_id])
+.row
+  %h3.col-6 Registro de hoy
+  = link_to 'Nueva toma', new_feed_path(session[:baby_id]), class: 'btn.btn-success.btn-sm'
 %p
 .container
   .row
@@ -14,6 +10,8 @@
       = render 'table_week'
 %p
   = "El total de tomas en el dia:  #{@total_feeds} ml - La media diaria de la semana es:  #{@week_average} ml "
+%p
+  = "Toma media a la edad de #{@baby.name} es de #{@baby.min_feed}"
 .container
   .row
     .col-sm
@@ -21,12 +19,15 @@
         .field{:style => "color: green" }
           = f.label :date, 'Seleccionar otra fecha:'
           %br
-          = f.date_field :date, id: :datepicker
+          = f.text_field :date, id: :datepicker, value: @day.strftime("%d/%m/%Y")
         .actions
           %br
           = f.submit 'Buscar'
     .col-sm
       = line_chart @data.group_by_day(:date).sum(:mililitres), width: "400px", height: "200"
+
+:javascript
+  $('#datepicker').datepicker({format: 'dd/mm/yyyy'})
 -# %p
 -#   = "El total de tomas en el dia:  #{@total_feeds} ml - La media diaria de la semana es:  #{@week_average} ml "
 -# %p

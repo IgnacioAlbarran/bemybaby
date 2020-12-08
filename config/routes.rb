@@ -46,5 +46,5 @@ Rails.application.routes.draw do
   get '/feeds/:id', to: 'feeds#show', as: 'feed'
   patch '/feeds/:id', to: 'feeds#update'
   put '/feeds/:id', to: 'feeds#update'
-  delete '/feeds/:id', to: 'feeds#destroy'
+  delete '/feeds/:id', to: 'feeds#destroy', as: 'delete_feed'
 end
