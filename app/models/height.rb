@@ -1,2 +1,0 @@
-class Height < ApplicationRecord
-end
