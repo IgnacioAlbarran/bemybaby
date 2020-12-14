@@ -5,6 +5,8 @@ class BabiesController < ApplicationController
   # GET /babies.json
   def index
     @babies = Baby.where(user_id: session[:user_id]).active
+    session[:baby_id] = session[:baby_id] || @babies.first&.id || nil
+
     if @babies.nil?
       render new_baby_path
     end
