@@ -63,5 +63,15 @@ describe('Rails using scenarios examples', function() {
     cy.get('input')
       .contains('Guardar')
       .click()
+
+    cy.get('a')
+      .contains('Tomas')
+      .click();
+
+    cy.get('#datepicker')
+      .click()
+      .get('td')
+      .contains('1')
+
   });
 })
