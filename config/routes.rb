@@ -47,4 +47,16 @@ Rails.application.routes.draw do
   patch '/feeds/:id', to: 'feeds#update'
   put '/feeds/:id', to: 'feeds#update'
   delete '/feeds/:id', to: 'feeds#destroy', as: 'delete_feed'
+
+  # MeasuresController
+  get '/measures', to: 'measures#index', as: 'measures'
+
+  # WeightsController
+  post '/weights', to: 'weights#create'
+  get '/weights/:id/edit', to: 'weights#edit'
+  put '/weights/:id', to: 'weights#update'
+  # HeightsController
+  post '/heights', to: 'heights#create'
+  get '/heights/:id/edit', to: 'heights#edit'
+  put '/heights/:id', to: 'heights#update'
 end

@@ -1,0 +1,44 @@
+.row
+  %h3.col-6 Peso y Altura
+%p
+.container
+  .row
+    .col-sm
+      = area_chart @height_data.pluck(:date, :height), width: "400px", height: "200"
+      -# %button.btn-sm.btn-success{"data-target" => "#weightModal", "data-toggle" => "modal", :type => "button"}
+      %br
+      -# Registrar peso
+      = render 'measures/edit_height_table'
+    .col-sm
+      = area_chart @weight_data.pluck(:date, :weight), width: "400px", height: "200"
+      %br
+      = render 'measures/edit_weight_table'
+%br
+-# .row
+-#   %button.btn-sm.btn-success{"data-target" => "#weightModal", "data-toggle" => "modal", :type => "button"}
+-#     Registrar peso
+-# %br
+-# .row
+-#   %button.btn-sm.btn-success{"data-target" => "#heightModal", "data-toggle" => "modal", :type => "button"}
+-#     Registrar Altura
+
+-# #weightModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+-#   .modal-dialog{:role => "document"}
+-#     .modal-content
+-#       .modal-header
+-#         %h5#exampleModalLabel.modal-title Registrar Peso
+-#         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+-#           %span{"aria-hidden" => "true"} ×
+-#       = render 'weight_form'
+
+-# #heightModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+-#   .modal-dialog{:role => "document"}
+-#     .modal-content
+-#       .modal-header
+-#         %h5#exampleModalLabel.modal-title Registrar Altura
+-#         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+-#           %span{"aria-hidden" => "true"} ×
+-#       = render 'height_form'
+-# :javascript
+-#   $("#contact-table").html("<%= j render 'edit_' %>");
+-#   $("#message-alert").html("<%= alert_messages %>");

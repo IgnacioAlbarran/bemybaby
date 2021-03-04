@@ -1,0 +1,22 @@
+= form_for [@weight] do |f|
+  .modal-body
+    - if @weight.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@weight.errors.count, "error")} prohibited this baby from being saved:"
+        %ul
+          - @weight.errors.full_messages.each do |message|
+            %li= message
+    .field
+      = f.label :weight, 'Peso (gramos)'
+      %br
+      = f.number_field :weight, layout: :default, step: 10
+    .field
+      = f.label :date, 'Fecha'
+      %br
+      = f.text_field :date, id: :datepicker, value: Date.today.strftime("%d/%m/%Y")
+  .modal-footer
+    .actions
+      %br
+      = f.submit 'Guardar', class: 'button btn btn-primary'
+:javascript
+  $('#datepicker').datepicker({format: 'dd/mm/yyyy'})

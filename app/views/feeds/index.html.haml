@@ -28,20 +28,3 @@
 
 :javascript
   $('#datepicker').datepicker({format: 'dd/mm/yyyy'})
--# %p
--#   = "El total de tomas en el dia:  #{@total_feeds} ml - La media diaria de la semana es:  #{@week_average} ml "
--# %p
--#   %button.btn.btn-success.btn-sm
--#     = link_to 'Nueva toma', new_feed_path(session[:baby_id])
--# %p
--# = form_with url:feeds_path, method: :get do |f|
--#   .field{:style => "color: green" }
--#     = f.label :date, 'Seleccionar otra fecha:'
--#     %br
--#     = f.date_field :date, id: :datepicker
--#   .actions
--#     %br
--# -#     = f.submit 'Buscar'
-
--# = line_chart @data.group_by_day(:date).sum(:mililitres), width: "400px", height: "200"
-

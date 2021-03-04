@@ -1,0 +1,28 @@
+- @height=SchContact.new unless @height
+= form_with(model: @height, remote: true, format: :js) do |form|
+  %table.table
+    %thead
+      %tr
+        %th.text-left{ width: '8%' }
+          - if @height.id
+            = link_to del_height_path(@weight.id),  class: "btn btn-danger float-left",method: 'delete', title:'Borrar Contacto', data: { confirm: 'La altura se borrará de la base de datos.<br> ¿Estás seguro?' },remote: true, format: :js do
+              %i.fa.fa-trash-alt
+        %th
+          =form.number_field :height, class:"form-control", placeholder: "Altura", required: true
+        %th
+          =form.text_field :date, id: :datepicker, value: Date.today.strftime("%d/%m/%Y"), class:"form-control", placeholder: "fecha"
+        %th.text-right{ width: '8%' }
+          = form.button type: "submit", id: :submit, title:'Crear altura', class: "btn btn-secondary float-right float-right" do
+            %i.fa.fa-check
+    %tbody
+      - @baby.heights.each do |height|
+        %tr{class: "#{'select-gray' if @height.id==height.id}"}
+          %td
+          %td.text-center= height.date.strftime("%d/%m/%Y")
+          %td.text-center= height.height
+          %td.text-right
+            = link_to edit_height_path(height.id),  class: "btn btn-light float-right", title:"Editar Altura", remote: true, format: :js do
+              %i.fa.fa-edit
+
+:javascript
+  $('#datepicker').datepicker({format: 'dd/mm/yyyy'})

@@ -4,6 +4,8 @@ class Baby < ApplicationRecord
   belongs_to :user
   has_many :users
   has_many :feeds, source: :user
+  has_many :weights
+  has_many :heights
 
   validates :name, :last_name, :dob, :gender, :blood_type, presence: true
   validates_with BabyValidator, on: :create
