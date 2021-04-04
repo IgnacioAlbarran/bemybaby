@@ -65,4 +65,8 @@ class Baby < ApplicationRecord
     age_baby_days = (Date.today - self.dob).to_i
     minimum_feeds[minimum_feeds.keys.select { |key| key > age_baby_days }.first]
   end
+
+  def age_in_months
+    (Date.today - self.dob).to_i / 30
+  end
 end

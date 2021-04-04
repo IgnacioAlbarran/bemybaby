@@ -2245,6 +2245,9 @@ pre code {
 }
 
 @media (max-width: 767.99px) {
+  a {
+    font-size: 9px !important;
+  }
   .table-responsive-md {
     display: block;
     width: 100%;
@@ -2255,6 +2258,20 @@ pre code {
 
   .table-responsive-md > .table-bordered {
     border: 0;
+  }
+
+  .content {
+    padding: 5px !important;
+  }
+
+  .table-responsive {
+    font-size: 60% !important;
+    display: block;
+    width: 100%;
+    display: inline-table;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
   }
 }
 
@@ -2287,6 +2304,7 @@ pre code {
 }
 
 .table-responsive {
+  font-size: 100%;
   display: block;
   width: 100%;
   overflow-x: auto;

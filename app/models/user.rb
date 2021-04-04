@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def full_name
     "#{name} #{last_name}"
   end
+
+  def is_admin?
+    level >= 2
+  end
 end

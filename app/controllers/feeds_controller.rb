@@ -1,12 +1,21 @@
 class FeedsController < ApplicationController
   def index
-    @baby = Baby.find(session[:baby_id])
-    @day = params[:date]&.to_date || Date.today
-    @feeds = @baby.feed_list_day(@day)
-    @total_feeds = @feeds.pluck(:mililitres).sum || 0
-    @feeds_week = @baby.feeds_week_by_day(@day)
-    @data = Feed.where(baby_id: @baby.id).where('date >= ?', @day.monday).where('date <= ?', @day.sunday)
-    @week_average = Feed.week_average(@feeds_week)
+    @baby = nil || Baby.find(session[:baby_id])
+
+    if is_there_any_baby?
+      @feed = Feed.new
+      @day = params[:date]&.to_date || Date.today
+      @feeds = @baby.feed_list_day(@day)
+      @total_feeds = @feeds.pluck(:mililitres).sum || 0
+      @feeds_week = @baby.feeds_week_by_day(@day)
+      @data = Feed.where(baby_id: @baby.id).where('date >= ?', @day.monday).where('date <= ?', @day.sunday)
+      @week_average = Feed.week_average(@feeds_week)
+    else
+      respond_to do |format|
+        format.html { redirect_to babies_path, notice: '¿Hablamos de bebés o de qué? anda chat@, registra uno' }
+      end
+    end
+
   end
 
   # GET /feeds/new
@@ -34,7 +43,7 @@ class FeedsController < ApplicationController
         format.html { redirect_to feeds_path, notice: 'feed was successfully created.' }
       else
         p @feed.errors.full_messages
-        format.html { render :new, notice: @feed.errors.full_messages}
+        format.html { redirect_to feeds_path, notice: @feed.errors.full_messages }
       end
     end
   end
@@ -50,6 +59,10 @@ class FeedsController < ApplicationController
   end
 
   private
+
+  def is_there_any_baby?
+    @baby
+  end
 
   def feed_params
     params.require(:feed).permit(:date, :hour, :mililitres)
