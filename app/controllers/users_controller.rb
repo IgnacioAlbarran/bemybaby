@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         session[:baby_id] = nil
-        format.html { redirect_to babies_path, notice: 'User was successfully created.' }
+        format.html { redirect_to new_baby_path, notice: 'Usuario creado: registra a tu bebé' }
       else
         @message = @user.errors.full_messages
         format.html { render :new }
