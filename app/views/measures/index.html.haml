@@ -4,16 +4,17 @@
 .container
   .row
     .col-sm
-      = area_chart @height_data.pluck(:date, :height), width: "400px", height: "200"
-      -# %button.btn-sm.btn-success{"data-target" => "#weightModal", "data-toggle" => "modal", :type => "button"}
+      = area_chart @height_data.pluck(:date, :height), width: "450px", height: "200px"
+      = line_chart Height.percentils.map { |k,v| { name: k, data: v } }, width: "450px", height: "200px"
       %br
       -# Registrar peso
       = render 'measures/edit_height_table'
     .col-sm
-      = area_chart @weight_data.pluck(:date, :weight), width: "400px", height: "200"
+      = area_chart @weight_data.pluck(:date, :weight), width: "450px", height: "200px"
       %br
       = render 'measures/edit_weight_table'
 %br
+
 -# .row
 -#   %button.btn-sm.btn-success{"data-target" => "#weightModal", "data-toggle" => "modal", :type => "button"}
 -#     Registrar peso

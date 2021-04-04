@@ -59,13 +59,13 @@ class BabiesController < ApplicationController
 
   # DELETE /babies/1
   # DELETE /babies/1.json
-  def destroy
-    @user.babies.find(@baby.id).destroy
-    respond_to do |format|
-      format.html { redirect_to babies_path, notice: 'Baby was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @user.babies.find(@baby.id).destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to babies_path, notice: 'Baby was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   def select_baby
     @baby = Baby.find(params[:baby_id])

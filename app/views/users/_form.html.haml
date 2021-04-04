@@ -2,7 +2,7 @@
   .col-md-5
     .card.p-4
       .card-header.text-center.text-uppercase.h4.font-weight-light
-        Edita tu usuario
+        Nuevo usuario
       .card-body.py-5
         = bootstrap_form_for(@user, layout: :horizontal) do |f|
           = f.text_field :name, label: 'Nombre', layout: :default
@@ -10,5 +10,4 @@
           = f.email_field :email, label: 'Email', layout: :default
           = f.password_field :password, label: 'Contraseña', layout: :default
           = f.password_field :password_confirmation, label: 'Confirma contraseña', layout: :default
-          = f.form_group do
-            = f.submit 'Actualizar usuario'
+          %button.btn.btn-primary{:type => "submit"} Submit

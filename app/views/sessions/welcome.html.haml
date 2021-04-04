@@ -1,12 +1,23 @@
 %link{:href => "https://fonts.googleapis.com/css?family=Lobster", :rel => "stylesheet", :type => "text/css"}
-.container.offset-1
+.container-fluid
   .row
-    %h1.main-title BeMyBaby
-.container.offset-1
+    .col
+    .col-lg-.wide
+      %h1.main-title BabyBook
+    .col
   .row
-    %h7 The best baby diary for parents
-.container.offset-2
+    .col
+    .col-lg-.center
+      %h5
+        %i The baby diary for parents
+    .col
   .row
-    %p.container
+    .col
+    .col-lg-.center
       = button_to "Entrar", new_session_path, method: :get
-      = button_to "Registrarse", new_user_path, method: :get
+    .col
+  .row
+    .col
+    .col-lg-.center
+
+    .col

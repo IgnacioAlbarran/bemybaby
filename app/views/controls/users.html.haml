@@ -1,0 +1,15 @@
+%h2 USUARIOS
+
+%table.table.table.striped
+  %thead
+    %tr
+      %th Id
+      %th Nombre y apellidos
+      %th Fecha alta
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td= link_to "#{user.name} #{user.last_name}", edit_user_path(user)
+        %td= user.created_at

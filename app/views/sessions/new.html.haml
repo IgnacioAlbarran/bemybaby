@@ -12,3 +12,6 @@
       = password_field_tag :password
       %p
       = submit_tag "Entrar"
+      %p
+      %h9 Si no eres usuario puedes
+      = link_to " registrarte", new_user_path, method: :get

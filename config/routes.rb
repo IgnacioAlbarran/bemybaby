@@ -55,8 +55,20 @@ Rails.application.routes.draw do
   post '/weights', to: 'weights#create'
   get '/weights/:id/edit', to: 'weights#edit'
   put '/weights/:id', to: 'weights#update'
+
   # HeightsController
   post '/heights', to: 'heights#create'
   get '/heights/:id/edit', to: 'heights#edit'
   put '/heights/:id', to: 'heights#update'
+
+  # CheckupsController
+  get '/checkups', to: 'checkups#index', as: 'checkups'
+
+  # VaccinesController
+  get '/vaccines', to: 'vaccines#index', as: 'vaccines'
+
+  get '/height_percentils', to: 'charts#height_percentils'
+
+  # Control
+  get '/control/users', to: 'controls#users'
 end

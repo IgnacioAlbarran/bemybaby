@@ -1,26 +1,17 @@
 %h2.table-title Mis bebés
-%table.table.table-responsive-xl
+%table.table-responsive
   %thead
     %tr
       %th Nombre
-      %th Apellido
-      %th Dob
+      %th F. Nac.
       %th Sexo
-      %th Grupo Sanguineo
       %th
   %tbody
     - @babies.each do |baby|
       %tr
-        %td= baby.name
-        %td= baby.last_name
+        %td= link_to "#{baby.name} #{baby.last_name}", select_baby_path(baby.id)
         %td= baby.dob
         %td= baby.gender
-        %td= baby.blood_type
-        - if baby.id != session[:baby_id].to_i
-          %td= link_to 'Seleccionar', select_baby_path(baby.id)
-        - else
-          %td= link_to 'Editar', edit_baby_path(baby.id)
-          %td= link_to 'Borrar', delete_baby_path(baby.id), method: :post, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Consultar', edit_baby_path(baby.id)
 %br
-
 = link_to 'Registrar bebé', new_baby_path

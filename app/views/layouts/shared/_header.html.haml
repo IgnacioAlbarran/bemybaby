@@ -1,9 +1,7 @@
 %nav.navbar.page-header
-  %a.btn.btn-link.sidebar-mobile-toggle.d-md-none.mr-auto{:href => "#"}
+  %a.btn.btn-link.sidebar-mobile-toggle.mr-auto{:href => "#"}
     %i.fa.fa-bars
   =image_tag('baby.png', class: 'logo')
-  %a.btn.btn-link.sidebar-toggle.d-md-down-none{:href => "#"}
-    %i.fa.fa-bars
   %ul.navbar-nav.ml-auto
     %li.nav-item.d-md-down-none
       %a{:href => "#"}
@@ -12,7 +10,7 @@
     %li.nav-item.d-md-down-none
       %a{:href => "#"}
         %i.fa.fa-envelope-open
-        %span.badge.badge-pill.badge-danger 5
+        %span.badge.badge-pill.badge-danger
     %li.nav-item.dropdown
       %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
         %span.medium.ml-1.d-md-down-none #{me.full_name}
@@ -27,9 +25,3 @@
           %i.fa.fa-door-open
           Salir
 
-%script{:src => "./vendor/jquery/jquery.min.js"}
-%script{:src => "./vendor/popper.js/popper.min.js"}
-%script{:src => "./vendor/bootstrap/js/bootstrap.min.js"}
-%script{:src => "./vendor/chart.js/chart.min.js"}
-%script{:src => "./js/carbon.js"}
-%script{:src => "./js/demo.js"}

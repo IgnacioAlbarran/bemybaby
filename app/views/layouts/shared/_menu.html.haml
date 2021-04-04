@@ -5,27 +5,32 @@
         = "Bebé seleccionado: #{Baby.find_by(id: session[:baby_id])&.name || 'ninguno'}"
       %li.nav-item
         %a.nav-link.active{:href => babies_path}
-          %i.icon.icon-speedometer
+          %i.fas.fa-child
           Mi bebe
       %li.nav-item
         %a.nav-link.active{:href => feeds_path }
-          %i.icon.icon-speedometer
+          %i.fas.fa-utensils
           Tomas
       %li.nav-item
         %a.nav-link.active{:href => measures_path }
-          %i.icon.icon-speedometer
+          %i.fas.fa-ruler
           Peso y altura
       %li.nav-item
-        %a.nav-link.active{:href => "index.html"}
-          %i.icon.icon-speedometer
-          Proximos chequeos
+        %a.nav-link.active{:href => checkups_path}
+          %i.far.fa-calendar-alt
+          Revisiones
       %li.nav-item
-        %a.nav-link.active{:href => "index.html"}
-          %i.icon.icon-speedometer
+        %a.nav-link.active{:href => vaccines_path}
+          %i.fas.fa-syringe
           Vacunas
+      -if current_user.is_admin?
+        %li.nav-item
+          %a.nav-link.active{:href => control_users_path}
+            %i.fas.fa-toolbox
+            Panel de control
       %li.nav-item
         %a.nav-link.active{:href => close_session_path }
-          %i.icon.icon-speedometer
+          %i.fas.fa-door-open
           Salir
 
 
