@@ -32,8 +32,6 @@ Rails.application.routes.draw do
   get '/babies/:id', to: 'babies#show', as: 'baby'
   patch '/babies/:id', to: 'babies#update'
   put '/babies/:id', to: 'babies#update'
-  delete '/babies/:id', to: 'babies#destroy'
-
   post '/delete_baby/:id', to: 'babies#delete_baby', as: 'delete_baby'
 
   # FeedsController
@@ -67,8 +65,7 @@ Rails.application.routes.draw do
   # VaccinesController
   get '/vaccines', to: 'vaccines#index', as: 'vaccines'
 
-  get '/height_percentils', to: 'charts#height_percentils'
-
   # Control
+  get '/control/index', to: 'controls#index'
   get '/control/users', to: 'controls#users'
 end
