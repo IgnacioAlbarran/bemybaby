@@ -1,14 +1,13 @@
+%h3 Tomas de hoy
 %table.table.table.striped
   %thead
     %tr
-      %th Dia
       %th Hora
       %th Cantidad
       %th Borrar
   %tbody
     - @feeds.each do |feed|
       %tr
-        %td= feed.date.to_date.strftime("%A")
         %td= feed.hour.strftime("%H:%M")
         %td= feed.mililitres
         %td= link_to 'Borrar', delete_feed_path(feed.id), method: :delete

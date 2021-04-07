@@ -6,5 +6,5 @@
   %tbody
     - @feeds_week.each do |k, v|
       %tr
-        %td= k.to_s
+        %td= v[:date]
         %td= v[:mililitres]

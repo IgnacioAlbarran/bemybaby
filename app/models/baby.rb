@@ -41,7 +41,7 @@ class Baby < ApplicationRecord
     WEEK_DAYS.each do |day|
       corresponding_date = selected_week_monday + WEEK_DAYS.index(day)
       data[day] = {
-                    date: corresponding_date,
+                    date: I18n.l(corresponding_date, format: '%A'),
                     mililitres: feeds.where(date: corresponding_date).pluck(:mililitres).sum
                   }
     end

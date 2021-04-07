@@ -12,14 +12,19 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
 !/log/.keep
 !/tmp/.keep
 
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+/config/credentials.yml.enc
+/config/database.yml
+/config/master.key
+/config/puma.rb
+/log/**
+/tmp/**
 
 /node_modules
 /yarn-error.log
@@ -32,3 +37,4 @@ spec/cypress/screenshots/All Specs/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
