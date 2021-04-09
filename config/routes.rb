@@ -69,5 +69,5 @@ Rails.application.routes.draw do
 
   # Control
   get '/control/index', to: 'controls#index'
-  get '/control/users', to: 'controls#users'
+  get '/control/users', to: 'controls#users', as: 'users_control'
 end
