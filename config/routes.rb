@@ -53,11 +53,13 @@ Rails.application.routes.draw do
   post '/weights', to: 'weights#create'
   get '/weights/:id/edit', to: 'weights#edit'
   put '/weights/:id', to: 'weights#update'
+  delete '/weights/:id', to: 'weights#destroy', as: 'delete_weight'
 
   # HeightsController
   post '/heights', to: 'heights#create'
   get '/heights/:id/edit', to: 'heights#edit'
   put '/heights/:id', to: 'heights#update'
+  delete '/heights/:id', to: 'heights#destroy', as: 'delete_height'
 
   # CheckupsController
   get '/checkups', to: 'checkups#index', as: 'checkups'

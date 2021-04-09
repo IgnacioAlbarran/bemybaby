@@ -30,19 +30,6 @@ class Feed < ApplicationRecord
 
   end
 
-  def feeds_week_by_day(reference_day)
-    selected_week_monday = reference_day.to_date.monday
-    data = Hash.new
-    WEEK_DAYS.each do |day|
-      corresponding_date = selected_week_monday + WEEK_DAYS.index(day)
-      data[day] = {
-                    date: corresponding_date,
-                    mililitres: Baby.find(session[:baby_id]).feeds.where(date: corresponding_date).pluck(:mililitres).sum
-                  }
-    end
-    return data
-  end
-
   def feeds_by_week_chart
     data = []
     data = @feeds_week.values.each { |day| chart << day.values }

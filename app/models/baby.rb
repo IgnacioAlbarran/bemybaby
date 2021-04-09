@@ -66,6 +66,24 @@ class Baby < ApplicationRecord
     minimum_feeds[minimum_feeds.keys.select { |key| key > age_baby_days }.first]
   end
 
+  def height_data
+    height_data = Hash.new
+    heights.each do |height|
+      age_at_date = (height.date.to_date - dob).to_i / 30
+      height_data[age_at_date] = height.height
+    end
+    height_data
+  end
+
+  def weight_data
+    weight_data = Hash.new
+    weights.each do |weight|
+      age_at_date = (weight.date.to_date - dob).to_i / 30
+      weight_data[age_at_date] = weight.weight
+    end
+    weight_data
+  end
+
   def age_in_months
     (Date.today - self.dob).to_i / 30
   end

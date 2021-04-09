@@ -14,7 +14,7 @@
     %li.nav-item.dropdown
       %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
         %span.medium.ml-1.d-md-down-none #{me.full_name}
-      .dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
+      .dropdown-menu.my-margin-left1{"aria-labelledby" => "dropdownMenuButton"}
         %a.dropdown-item{:href => edit_user_path(session[:user_id])}
           %i.fa.fa-user
           Perfil

@@ -4,7 +4,7 @@ class ChartsController < ApplicationController
   end
 
   def height_percentils
-    Height.percentils.each do |percentile|
+    Height.percentils_from_upto_2y.each do |percentile|
       render json: percentile.keys
     end
   end

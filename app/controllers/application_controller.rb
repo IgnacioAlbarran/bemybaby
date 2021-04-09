@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     User.find_by(id: session[:user_id])
   end
 
+  def current_baby
+    Baby.find_by(id: session[:baby_id])
+  end
+
   def logged_in?
     !current_user.nil?
   end

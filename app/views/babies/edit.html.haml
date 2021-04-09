@@ -1,5 +1,6 @@
 = render 'form'
-
-= link_to 'Mostrar', baby_path(@baby)
-\|
+%p
 = link_to 'Atras', babies_path(@baby.user_id)
+%p
+%P
+  =link_to 'Borrar', delete_baby_path(@baby), method: :post

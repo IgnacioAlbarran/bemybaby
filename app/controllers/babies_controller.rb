@@ -1,5 +1,5 @@
 class BabiesController < ApplicationController
-  before_action :set_baby_and_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_baby_and_user, only: [:show, :update, :destroy]
 
   # GET /babies
   # GET /babies.json
@@ -25,6 +25,7 @@ class BabiesController < ApplicationController
 
   # GET /babies/1/edit
   def edit
+    @baby = Baby.find(params[:id])
   end
 
   # POST /babies
@@ -86,7 +87,7 @@ private
   # Use callbacks to share common setup or constraints between actions.
   def set_baby_and_user
     @user = User.find(session[:user_id])
-    @baby = Baby.find(session[:baby_id])
+    @baby = Baby.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
