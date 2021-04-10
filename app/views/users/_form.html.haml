@@ -8,6 +8,8 @@
           = f.text_field :name, label: 'Nombre', layout: :default
           = f.text_field :last_name, label: 'Apellido', layout: :default
           = f.email_field :email, label: 'Email', layout: :default
+          - if current_user.is_admin?
+            = f.number_field :level, label: 'Nivel', layout: :default
           = f.password_field :password, label: 'Contraseña', layout: :default
           = f.password_field :password_confirmation, label: 'Confirma contraseña', layout: :default
           %button.btn.btn-primary{:type => "submit"} Submit
