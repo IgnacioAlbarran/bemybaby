@@ -6,6 +6,7 @@
       %th Id
       %th Nombre y apellidos
       %th Fecha alta
+      %th Nivel
 
   %tbody
     - @users.each do |user|
@@ -13,3 +14,4 @@
         %td= user.id
         %td= link_to "#{user.name} #{user.last_name}", edit_user_path(user)
         %td= user.created_at
+        %td= user.level
