@@ -87,4 +87,20 @@ class Baby < ApplicationRecord
   def age_in_months
     (Date.today - self.dob).to_i / 30
   end
+
+  def height_percentils
+    if gender == 'niña'
+      Height.girl_percentils
+    else
+      Height.boy_percentils
+    end
+  end
+
+  def weight_percentils
+    if gender == 'niña'
+      Weight.girl_percentils
+    else
+      Weight.boy_percentils
+    end
+  end
 end

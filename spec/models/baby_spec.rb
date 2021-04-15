@@ -92,4 +92,14 @@ RSpec.describe Baby, type: :model do
     expect(son.feeds_week_by_day(Date.today)['Monday'][:mililitres]).to eq(100)
     expect(son.feeds_week_by_day(Date.today)['Sunday'][:mililitres]).to eq(700)
   end
+
+
+  it 'knows the age in months for baby' do
+    baby = create(:baby, name: "perico", last_name: "palotes", dob: Date.today - 1.year , gender: "niño", blood_type: "A+", user_id: father.id)
+    new_born = create(:baby, name: "perico", last_name: "palotes", dob: Date.yesterday, gender: "niño", blood_type: "A+", user_id: father.id)
+
+    expect(baby.name).to eq('perico')
+    expect(baby.age_in_months).to eq(12)
+    expect(new_born.age_in_months).to eq(0)
+  end
 end

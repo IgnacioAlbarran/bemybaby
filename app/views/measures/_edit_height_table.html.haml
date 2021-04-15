@@ -1,13 +1,8 @@
 - @height = Height.new unless @height
-- @baby = Baby.find(session[:baby_id])
 = form_with(model: @height, remote: true, format: :js) do |form|
   %table.table
     %thead
       %tr
-        %th.text-left{ width: '8%' }
-          - if @height.id
-            = link_to delete_height_path(@height.id),  class: "btn btn-danger float-left", method: 'delete', title:'Borrar Altura', data: { confirm: 'La altura se borrará de la base de datos.<br> ¿Estás seguro?' }, remote: true, format: :js do
-              %i.fa.fa-trash-alt
         %th
           =form.number_field :height, class:"form-control", placeholder: "Altura (cm)", required: true
         %th
@@ -18,7 +13,6 @@
     %tbody
       - @baby.heights.each do |height|
         %tr{class: "#{'select-gray' if @height.id==height.id}"}
-          %td
           %td.text-center= height.date.strftime("%d/%m/%Y")
           %td.text-center= height.height
           %td.text-right

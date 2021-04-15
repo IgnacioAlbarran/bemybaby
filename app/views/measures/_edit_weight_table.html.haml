@@ -1,13 +1,8 @@
-- @weight=Weight.new unless @weight
-- @baby = Baby.find(session[:baby_id])
+- @weight= Weight.new unless @weight
 = form_with(model: @weight, remote: true, format: :js) do |form|
   %table.table
     %thead
       %tr
-        %th.text-left{ width: '8%' }
-          - if @weight.id
-            = link_to delete_weight_path(@weight.id),  class: "btn btn-danger float-left", method: 'delete', title:'Borrar peso', data: { confirm: 'El peso se borrará de la base de datos.<br> ¿Estás seguro?' }, remote: true, format: :js do
-              %i.fa.fa-trash-alt
         %th
           =form.number_field :weight, class:"form-control", placeholder: "Peso (Gramos)", required: true
         %th
@@ -18,7 +13,6 @@
     %tbody
       - @baby.weights.each do |weight|
         %tr{class: "#{'select-gray' if @weight.id==weight.id}"}
-          %td
           %td.text-center= weight.date.strftime("%d/%m/%Y")
           %td.text-center= weight.weight
           %td.text-right

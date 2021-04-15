@@ -48,6 +48,8 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
+        p 'ha habido error'
+        p @user.errors
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -72,6 +74,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :last_name, :email, :password, :level, :password_confirmation)
     end
 end

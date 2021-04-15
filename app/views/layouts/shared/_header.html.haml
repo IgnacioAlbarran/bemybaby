@@ -1,5 +1,5 @@
 %nav.navbar.page-header
-  %a.btn.btn-link.sidebar-mobile-toggle.mr-auto{:href => "#"}
+  %a.btn.btn-link.sidebar-mobile-toggle.mr-auto{:href => "#/"}
     %i.fa.fa-bars
   =image_tag('baby.png', class: 'logo')
   %ul.navbar-nav.ml-auto
@@ -12,7 +12,7 @@
         %i.fa.fa-envelope-open
         %span.badge.badge-pill.badge-danger
     %li.nav-item.dropdown
-      %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+      %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#/", :role => "button"}
         %span.medium.ml-1.d-md-down-none #{me.full_name}
       .dropdown-menu.my-margin-left1{"aria-labelledby" => "dropdownMenuButton"}
         %a.dropdown-item{:href => edit_user_path(session[:user_id])}

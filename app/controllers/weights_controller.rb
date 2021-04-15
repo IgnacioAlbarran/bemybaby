@@ -7,10 +7,10 @@ class WeightsController < ApplicationController
   def create
     @weight = Weight.new(weight_params)
     @weight.baby_id = session[:baby_id]
-    @baby = Baby.find(session[:baby_id])
 
     respond_to do |format|
       if @weight.save
+        @baby = Baby.find(session[:baby_id])
         format.js{ render 'measures/refresh_weights', notice: 'weight was successfully created.' }
         # format.html{ redirect_to measures_path, notice: 'weight was successfully created.' }
 

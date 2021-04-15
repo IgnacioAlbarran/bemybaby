@@ -21,7 +21,8 @@ $(document).ready(function () {
     /**
      * Mobile Sidebar Toggle
      */
-    $('.sidebar-mobile-toggle').on('click', function () {
+    $('.sidebar-mobile-toggle').on('click', function (e) {
+        e.preventDefault();
         $('body').toggleClass('sidebar-mobile-show');
     });
 });

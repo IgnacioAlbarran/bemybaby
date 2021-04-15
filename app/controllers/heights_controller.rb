@@ -14,10 +14,10 @@ class HeightsController < ApplicationController
   def create
     @height = Height.new(height_params)
     @height.baby_id = session[:baby_id]
-    @baby = Baby.find(session[:baby_id])
 
     respond_to do |format|
       if @height.save
+        @baby = @height.baby
         format.js{ render 'measures/refresh_heights', notice: 'height was successfully created.' }
         # format.html{ redirect_to measures_path, notice: 'height was successfully created.' }
 
@@ -38,6 +38,7 @@ class HeightsController < ApplicationController
   end
 
   def destroy
+    @baby = Baby.find(session[:baby_id])
     respond_to do |format|
       if Height.find(params[:id]).delete
         format.js{ render 'measures/refresh_heights', notice: 'Altura borrada.'}

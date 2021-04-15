@@ -3,42 +3,17 @@
   %h3 Peso y Altura
   .row
     .col-sm
-      = line_chart @chart_height_data.map { |k,v| { name: k, data: v } }, width: "400px", height: "250px", min: @chart_height_data['Percentile 3'].values.first, max: 82, xmax: @chart_height_data[@baby.name].keys.last, xmin: @baby.age_in_months > 12 ? @baby.age_in_months - 12 : @baby.age_in_months
+      = line_chart @chart_height_data.map { |k,v| { name: k, data: v } }, width: "300px", height: "412px", min: @chart_height_data['Percentile 3'].values.first, max: 82, xmax: @chart_height_data[@baby.name].keys.last, xmin: @baby.age_in_months > 12 ? @baby.age_in_months - 12 : @baby.age_in_months
       %br
       .div{id: 'heights-list'}
         = render 'measures/edit_height_table'
     .col-sm
-      = line_chart @chart_weight_data.map { |k,v| { name: k, data: v } }, width: "400px", height: "250px",  xmax: @baby_months + 6 || @baby_months, xmin: @baby.age_in_months > 12 ? @baby.age_in_months - 12 : @baby.age_in_months, min: @chart_weight_data['Percentile 3'].values.first, max: @closest_max_weight
+      = line_chart @chart_weight_data.map { |k,v| { name: k, data: v } }, width: "300px", height: "412px",  xmax: @baby_months + 6 || @baby_months, xmin: @baby.age_in_months > 12 ? @baby.age_in_months - 12 : @baby.age_in_months, min: @chart_weight_data['Percentile 3'].values.first, max: @closest_max_weight
       %br
       .div{id: 'weights-list'}
         = render 'measures/edit_weight_table'
 %br
 
--# .row
--#   %button.btn-sm.btn-success{"data-target" => "#weightModal", "data-toggle" => "modal", :type => "button"}
--#     Registrar peso
--# %br
--# .row
--#   %button.btn-sm.btn-success{"data-target" => "#heightModal", "data-toggle" => "modal", :type => "button"}
--#     Registrar Altura
 
--# #weightModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
--#   .modal-dialog{:role => "document"}
--#     .modal-content
--#       .modal-header
--#         %h5#exampleModalLabel.modal-title Registrar Peso
--#         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
--#           %span{"aria-hidden" => "true"} ×
--#       = render 'weight_form'
-
--# #heightModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
--#   .modal-dialog{:role => "document"}
--#     .modal-content
--#       .modal-header
--#         %h5#exampleModalLabel.modal-title Registrar Altura
--#         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
--#           %span{"aria-hidden" => "true"} ×
--#       = render 'height_form'
 -# :javascript
--#   $("#contact-table").html("<%= j render 'edit_' %>");
 -#   $("#message-alert").html("<%= alert_messages %>");
