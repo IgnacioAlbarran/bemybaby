@@ -34,7 +34,6 @@ class UsersController < ApplicationController
         session[:baby_id] = nil
         format.html { redirect_to new_baby_path, notice: 'Usuario creado: registra a tu bebé' }
       else
-        @message = @user.errors.full_messages
         format.html { render :new }
       end
     end

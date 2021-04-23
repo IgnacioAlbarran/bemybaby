@@ -2912,14 +2912,14 @@ fieldset[disabled] a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #42a5f5;
-  border-color: #42a5f5;
+  background-color: green;
+  border-color: #616060;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #1e94f3;
-  border-color: #128ef2;
+  background-color: green;
+  border-color: #616060;
 }
 
 .btn-primary:focus,
@@ -4858,6 +4858,7 @@ tbody.collapse.show {
 }
 
 .card-body {
+  color:green;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
@@ -4886,6 +4887,7 @@ tbody.collapse.show {
 }
 
 .card-header {
+  color: green;
   padding: 1rem 1rem;
   margin-bottom: 0;
   background-color: #fff;
