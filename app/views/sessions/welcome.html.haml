@@ -1,23 +1,12 @@
 %link{:href => "https://fonts.googleapis.com/css?family=Lobster", :rel => "stylesheet", :type => "text/css"}
-.container-fluid
-  .row
-    .col
-    .col-lg-.wide
-      %h1.main-title BabyBook
-    .col
-  .row
-    .col
-    .col-lg-.center
-      %h5
-        %i The baby diary for parents
-    .col
-  .row
-    .col
-    .col-lg-.center
-      = button_to "Entrar", new_session_path, method: :get
-    .col
-  .row
-    .col
-    .col-lg-.center
-
-    .col
+.row.justify-content-center
+  .col-md-3
+    .card.p-3.card-welcome-page
+      %h1.main-title
+        BabyBook
+      %h5.h5-welcome-page
+        %i The baby diary
+        %br
+        %i for parents
+      %p
+        = button_to "Entrar", new_session_path, method: :get

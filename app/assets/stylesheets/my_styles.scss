@@ -59,9 +59,17 @@
 }
 
 .main-title {
+  margin-top: 50%;
+  align-self: center;
   font-family:"Lobster";
   font-style: bold;
   font-size: 350%;
+}
+
+.h5-main-title {
+  padding-top: 5%;
+  align-self: center;
+  font-style: bold;
 }
 
 .table-title {
@@ -154,5 +162,52 @@ table.menu {
   font-size: 40px;
   top: 15px;
   right: 35px;
+  }
+}
+@media (min-width: 576px) {
+  .main-title {
+    font-family:"Lobster";
+    font-style: bold;
+    font-size: 600%;
+  }
+
+  .h5-main-title {
+    align-self: center;
+    font-style: bold;
+  }
+
+  .card-welcome-page {
+    border: transparent !important;
+    text-align: center;
+    color: green;
+  }
+
+  .h5-welcome-page {
+    font-family: courier;
+    font-size: 120%
+  }
+}
+
+@media (max-width: 575.99px) {
+  .main-title {
+    font-family:"Lobster";
+    font-style: bold;
+    font-size: 300%;
+  }
+
+  .h5-main-title {
+    align-self: center;
+    font-style: bold;
+  }
+
+  .card-welcome-page {
+    border: transparent !important;
+    text-align: center;
+    color: green;
+  }
+
+  .h5-welcome-page {
+    font-family: courier;
+    font-size: 80%
   }
 }
