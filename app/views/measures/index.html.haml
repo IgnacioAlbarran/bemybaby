@@ -3,7 +3,7 @@
   %h3 Peso y Altura
   .row
     .col-sm
-      = line_chart @chart_height_data.map { |k,v| { name: k, data: v } }, width: "300px", height: "412px", min: @chart_height_data['Percentile 3'].values.first, max: 82, xmax: @chart_height_data[@baby.name].keys.last, xmin: @baby.age_in_months > 12 ? @baby.age_in_months - 12 : @baby.age_in_months
+      = line_chart @chart_height_data.map { |k,v| { name: k, data: v } }, width: "300px", height: "412px", min: @chart_height_data['Percentile 3'].values.first, xmax: @chart_height_data[@baby.name].keys.last, xmin: @baby.age_in_months > 12 ? @baby.age_in_months - 12 : @baby.age_in_months
       %br
       .div{id: 'heights-list'}
         = render 'measures/edit_height_table'

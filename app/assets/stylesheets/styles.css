@@ -9999,8 +9999,9 @@ a.text-dark:hover {
 
 .page-header .navbar-nav .dropdown-menu {
   padding: 0;
-  min-width: 12rem;
+  min-width: 10rem;
   position: absolute;
+
 }
 
 .page-header .navbar-nav .dropdown-menu.dropdown-menu-right {

@@ -1,0 +1,19 @@
+= form_for @checkup do |f|
+  - if @checkup.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@checkup.errors.count, "error")} prohibited this checkup from being saved:"
+      %ul
+        - @checkup.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :baby
+    = f.text_field :baby
+  .field
+    = f.label :date
+    = f.date_select :date
+  .field
+    = f.label :notes
+    = f.text_area :notes
+  .actions
+    = f.submit 'Save'

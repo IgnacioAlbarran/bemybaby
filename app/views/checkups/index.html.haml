@@ -1,0 +1,25 @@
+%h1 Listing checkups
+
+%table
+  %thead
+    %tr
+      %th Baby
+      %th Date
+      %th Notes
+      %th
+      %th
+      %th
+
+  %tbody
+    - @checkups.each do |checkup|
+      %tr
+        %td= checkup.baby
+        %td= checkup.date
+        %td= checkup.notes
+        %td= link_to 'Show', checkup
+        %td= link_to 'Edit', edit_checkup_path(checkup)
+        %td= link_to 'Destroy', checkup, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Checkup', new_checkup_path

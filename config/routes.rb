@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :checkups
   resources :heights
   resources :weights
   # SessionsController
@@ -60,9 +61,6 @@ Rails.application.routes.draw do
   get '/heights/:id/edit', to: 'heights#edit'
   put '/heights/:id', to: 'heights#update'
   delete '/heights/:id', to: 'heights#destroy', as: 'delete_height'
-
-  # CheckupsController
-  get '/checkups', to: 'checkups#index', as: 'checkups'
 
   # VaccinesController
   get '/vaccines', to: 'vaccines#index', as: 'vaccines'

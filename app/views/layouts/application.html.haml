@@ -13,7 +13,7 @@
   %body.sidebar-fixed.header-fixed
     .page-wrapper
       = render 'layouts/shared/header'
-      .container-fluid
+      .main-container
         .sidebar
           = render 'layouts/shared/menu', user_id: session[:user_id]
         .content

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Baby:
+  = @checkup.baby
+%p
+  %b Date:
+  = @checkup.date
+%p
+  %b Notes:
+  = @checkup.notes
+
+= link_to 'Edit', edit_checkup_path(@checkup)
+\|
+= link_to 'Back', checkups_path

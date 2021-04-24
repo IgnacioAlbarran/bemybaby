@@ -189,6 +189,9 @@ table.menu {
 }
 
 @media (max-width: 575.99px) {
+  .content {
+    margin-left: 10px !important;
+  }
   .main-title {
     font-family:"Lobster";
     font-style: bold;
@@ -209,5 +212,10 @@ table.menu {
   .h5-welcome-page {
     font-family: courier;
     font-size: 100%
+  }
+
+  .page-header .navbar-nav .dropdown-menu.dropdown-menu-right {
+    left: auto;
+    right: 0px !important;
   }
 }

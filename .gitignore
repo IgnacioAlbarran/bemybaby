@@ -19,9 +19,9 @@
 /storage/*
 !/storage/.keep
 
+/config/secrets.yml
 /config/credentials.yml.enc
 /config/database.yml
-/config/master.key
 /config/puma.rb
 /log/**
 /tmp/**

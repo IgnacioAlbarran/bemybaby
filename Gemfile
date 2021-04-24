@@ -50,6 +50,7 @@ gem 'groupdate', '~> 5.2', '>= 5.2.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop', '0.82.0', require: false
+gem 'google-api-client', require: 'google/apis/calendar_v3'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.9'

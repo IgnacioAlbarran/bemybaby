@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_26_072222) do
+ActiveRecord::Schema.define(version: 2021_04_23_093244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2020_12_26_072222) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["user_id"], name: "index_babies_on_user_id"
+  end
+
+  create_table "checkups", force: :cascade do |t|
+    t.bigint "baby_id"
+    t.date "date"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_checkups_on_baby_id"
   end
 
   create_table "feeds", force: :cascade do |t|
@@ -67,4 +76,5 @@ ActiveRecord::Schema.define(version: 2020_12_26_072222) do
     t.index ["baby_id"], name: "index_weights_on_baby_id"
   end
 
+  add_foreign_key "checkups", "babies"
 end
