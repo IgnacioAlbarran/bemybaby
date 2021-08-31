@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-
   resources :checkups
   resources :heights
   resources :weights
   # SessionsController
   root to: 'sessions#welcome'
-  get 'new_session', to: 'sessions#new'
+  get '/test_point', to: 'sessions#test_point'
+  get 'new_session', to: 'sessions#new', as: 'new_session'
   post 'login', to: 'sessions#create'
   get 'close_session', to: 'sessions#close_session'
   get 'select_baby/:baby_id', to: 'babies#select_baby', as: 'select_baby'

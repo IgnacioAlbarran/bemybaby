@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :logged_in?, only: [:new, :create, :test_point, :welcome]
+
   layout 'plain'
 
   def new
@@ -17,6 +19,10 @@ class SessionsController < ApplicationController
   end
 
   def welcome
+  end
+
+  def test_point
+    UserMailer.welcome_email('ignacioalbarran851@gmail.com').deliver_now
   end
 
   def close_session

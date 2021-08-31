@@ -69,7 +69,7 @@ class Baby < ApplicationRecord
   def height_data
     height_data = Hash.new
     heights.each do |height|
-      age_at_date = (height.date.to_date - dob).to_i / 30
+      age_at_date = (height.date.to_date - dob).to_i / 30.5
       height_data[age_at_date] = height.height
     end
     height_data
@@ -78,14 +78,14 @@ class Baby < ApplicationRecord
   def weight_data
     weight_data = Hash.new
     weights.each do |weight|
-      age_at_date = (weight.date.to_date - dob).to_i / 30
+      age_at_date = (weight.date.to_date - dob).to_i / 30.5
       weight_data[age_at_date] = weight.weight
     end
     weight_data
   end
 
   def age_in_months
-    (Date.today - self.dob).to_i / 30
+    (Date.today - self.dob).to_i / 30.5
   end
 
   def height_percentils
@@ -102,5 +102,9 @@ class Baby < ApplicationRecord
     else
       Weight.boy_percentils
     end
+  end
+
+  def next_vaccines
+    Vaccine.next_vaccines(self)
   end
 end

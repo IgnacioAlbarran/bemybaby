@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_23_093244) do
+ActiveRecord::Schema.define(version: 2021_07_14_174825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_093244) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.string "territory"
     t.index ["user_id"], name: "index_babies_on_user_id"
   end
 
@@ -56,6 +57,13 @@ ActiveRecord::Schema.define(version: 2021_04_23_093244) do
     t.index ["baby_id"], name: "index_heights_on_baby_id"
   end
 
+  create_table "territories", force: :cascade do |t|
+    t.string "territory_code"
+    t.string "territory_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "last_name"
@@ -65,6 +73,23 @@ ActiveRecord::Schema.define(version: 2021_04_23_093244) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.datetime "deleted_at"
+  end
+
+  create_table "vaccination_programs", force: :cascade do |t|
+    t.bigint "territory_id"
+    t.integer "month"
+    t.bigint "vaccine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["territory_id"], name: "index_vaccination_programs_on_territory_id"
+    t.index ["vaccine_id"], name: "index_vaccination_programs_on_vaccine_id"
+  end
+
+  create_table "vaccines", force: :cascade do |t|
+    t.string "short_name"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "weights", force: :cascade do |t|
@@ -77,4 +102,6 @@ ActiveRecord::Schema.define(version: 2021_04_23_093244) do
   end
 
   add_foreign_key "checkups", "babies"
+  add_foreign_key "vaccination_programs", "territories"
+  add_foreign_key "vaccination_programs", "vaccines"
 end

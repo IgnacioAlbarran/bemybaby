@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :logged_in?, only: [:new]
   skip_before_action :verify_authenticity_token, :only => :create
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   layout 'plain', only: [:new, :create]
@@ -7,6 +8,9 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all.order(:email)
+    if !user_authorised?
+      redirect_to user_path(current_user), notice: 'No tiene autorización'
+    end
   end
 
   # GET /users/1

@@ -11,10 +11,18 @@
         = f.date_select :date, layout: :default
       .field
         = f.time_select :hour, layout: :default, default: Time.now.localtime
-      .field{ id: '#mililitres-range', style: "size: 600px, width: 100% !important;" }
-        #mililitres-range
-          = f.number_field :mililitres, type: :range, min: 20, max: 500
-        = :value
+      .field{:style=>'color:blue'}
+        = f.text_field :mililitres, value: 20, min: 20, max: 500, :style=>'width:30px; color:blue'
+        mililitres
+      .btn-group
+        %button.btn.btn-primary{:type => "button"} 50ml
+        %button.btn.btn-primary{:type => "button"} 100ml
+        %button.btn.btn-primary{:type => "button"} 150ml
+      %br
+      .btn-group{:style=>'margin-top:10px; margin-bottom:10px'}
+        %button.btn.btn-primary{:type => "button"} 200ml
+        %button.btn.btn-primary{:type => "button"} 250ml
+        %button.btn.btn-primary{:type => "button"} 300ml
+      %br
       .actions
         = f.submit 'Guardar'
-

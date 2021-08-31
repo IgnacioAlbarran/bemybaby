@@ -92,6 +92,6 @@ private
 
   # Only allow a list of trusted parameters through.
   def baby_params
-    params.require(:baby).permit(:name, :last_name, :dob, :gender, :blood_type, :user_id)
+    params.require(:baby).permit(:name, :last_name, :dob, :gender, :blood_type, :user_id, :territory)
   end
 end

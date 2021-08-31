@@ -1,3 +1,4 @@
+- territories_hash = Territory.pluck(:territory_name, :id).to_h
 %h1 Datos del Bebé
 = form_for [@baby] do |f|
   - if @baby.errors.any?
@@ -26,6 +27,10 @@
     = f.label :blood_type, 'Grupo Sanguíneo'
     %br
     = f.select :blood_type, Baby.blood_types.keys
+  .field
+    = f.label :territory, 'Comunidad Autónoma'
+    %br
+    = f.select :territory, territories_hash
   .actions
     %br
     = f.submit 'Guardar'

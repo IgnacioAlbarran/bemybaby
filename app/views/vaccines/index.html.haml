@@ -1,0 +1,27 @@
+%h2.table-title
+  Vacunas en
+  = Territory.find(@baby.territory).territory_name
+%table.table.table-responsive
+  %thead.thead-dark
+    %tr
+      %th Edad
+      %th Nombre
+  %tbody
+    - @baby_vac_cal.each  do |k, value|
+      %tr
+        - if k < 12
+          %td
+            = k
+            meses
+        - else
+          %td
+            = k/12
+            = 'año'.pluralize(count = k/12)
+            - unless (k%12).zero?
+              y
+              = k%12
+              meses
+        %td
+          - value.pluck(:vaccine_id).each do |id|
+            = Vaccine.find(id).name
+%br
