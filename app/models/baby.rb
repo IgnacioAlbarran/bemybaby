@@ -24,7 +24,7 @@ class Baby < ApplicationRecord
   }
 
   def baby_exists?
-    !Baby.where(name: name, last_name: last_name, blood_type: blood_type, dob: dob).blank?
+    Baby.exists?(name: name, last_name: last_name, blood_type: blood_type, dob: dob)
   end
 
   def total_feeds_in_the_day(day)
