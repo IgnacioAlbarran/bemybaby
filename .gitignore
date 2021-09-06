@@ -37,4 +37,7 @@ spec/cypress/screenshots/All Specs/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
+/config/alocal_env.yml
+/config/local_env.yml
+/Users/ignacio/myapps/bemybaby/google7010c395301f1aa7.html
+/Users/ignacio/myapps/bemybaby/credentials.json
