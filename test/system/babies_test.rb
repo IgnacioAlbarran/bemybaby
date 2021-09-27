@@ -21,7 +21,7 @@ class BabiesTest < ApplicationSystemTestCase
     fill_in "Name", with: @baby.name
     click_on "Create Baby"
 
-    assert_text "Baby was successfully created"
+    assert_text "Bebé registrado correctamente"
     click_on "Back"
   end
 
@@ -36,7 +36,7 @@ class BabiesTest < ApplicationSystemTestCase
     fill_in "Name", with: @baby.name
     click_on "Update Baby"
 
-    assert_text "Baby was successfully updated"
+    assert_text "Datos del bebé actualizados"
     click_on "Back"
   end
 
@@ -46,6 +46,6 @@ class BabiesTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Baby was successfully destroyed"
+    assert_text "Datos del bebé borrados"
   end
 end

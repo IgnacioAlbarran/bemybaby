@@ -36,7 +36,7 @@ class BabiesController < ApplicationController
 
     respond_to do |format|
       if @baby.save
-        format.html { redirect_to babies_path, notice: 'Baby was successfully created.' }
+        format.html { redirect_to babies_path, notice: 'Bebé registrado correctamente.' }
         format.json { render :show, status: :created, location: @baby }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class BabiesController < ApplicationController
   def update
     respond_to do |format|
       if @baby.update(baby_params)
-        format.html { redirect_to babies_path, notice: 'Baby was successfully updated.' }
+        format.html { redirect_to babies_path, notice: 'Datos del bebé actualizados.' }
         format.json { render :show, status: :ok, location: @baby }
       else
         format.html { render :edit }
@@ -78,7 +78,7 @@ class BabiesController < ApplicationController
     if Baby.find(params[:id]).update(deleted_at: Time.now)
       session[:baby_id] = nil
       respond_to do |format|
-        format.html { redirect_to babies_path, notice: 'Baby was successfully deleted.' }
+        format.html { redirect_to babies_path, notice: 'Datos del bebé borrados.' }
       end
     end
   end
